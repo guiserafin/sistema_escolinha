@@ -1,0 +1,367 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial, sans-serif;
+}
+
+/***PROPRIEDADES GERAIS***/
+
+
+.justify-content-between{
+    justify-content: space-between;
+}
+.d-flex{
+    display: flex;
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.d-none{
+    display: none !important;
+}
+
+.span-error{
+    display: inline-block;
+    width: 80%;
+    margin-top: 4px;
+    font-size: 15px;
+    background-color: #f32e2e;
+    padding: 2px;
+    color: white;
+}
+
+/**TELA DE LOGIN**/
+/*Pagina completa*/
+.geral{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(135, 145, 226);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*cabeçalho com logo*/
+header{
+    background-color: rgb(227, 227, 1);
+    text-align: center;
+}
+
+.logo{
+    width: 100%;
+}
+.logo img{
+    width: 280px;
+}
+
+/*mensagem de bem-vindo*/
+.titulo{
+    margin-top: 200px;
+    color: white;
+    text-decoration: underline;
+}
+
+/*div formulario*/
+.form-login{
+    width: 30%;
+    height:280px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    box-shadow: 1px 1px 2px 1px black;
+    margin-top: 20px;
+}
+
+.email-input{
+    margin-bottom: 20px;
+}
+
+.login input{
+    outline: none;
+    width: 80%;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 10px;
+}
+
+.login label{
+    font-size: 20px;
+}
+
+.form-login p{
+    margin-top: 20px;
+}
+/*botao login*/
+.form-login form button{
+    margin-top: 15px;
+    width: 25%;
+    height: 30px;
+    text-transform: uppercase;
+    border: 1px solid black;
+    background-color: rgb(135, 145, 226);
+    cursor: pointer;
+    box-shadow: 0 5px #999;
+}
+
+.form-login form button:hover{background-color: #2d3560;}
+.form-login form button:active{
+    box-shadow: 0px 1px #999;
+    transform: translateY(4px);
+}
+
+/***ESTILIZAÇÃO DASHBOARD***/
+
+.geral-dashboard{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+}
+
+.content{
+    width: 100%;
+}
+
+.menu-top{
+    width: calc(100% - 5px);
+    background-color: #2d3560;
+    height: 40px;
+    margin: 5px 5px 5px 0;
+    border-radius: 5px;
+    border: 1px solid white;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    line-height: 20px;
+}
+
+.menu-top p{
+    margin: 20px auto;
+    background-color: #2d3560;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    line-height: 40px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+/* .menu-top p:focus{
+    display: none;
+} */
+
+.menu-left{
+    background-color: rgb(135, 145, 226);
+    width: 220px;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.menu_left_link{
+    display: block;
+    padding: 5px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.menu-left img{
+    width: 100%;
+}
+
+.menu_left_item{
+    list-style: none;
+    margin-top: 15px;
+    background-color: rgb(227, 227, 1);
+    width: 100%;
+    border-radius: 10px;
+}
+
+.menu_left_item_selected{
+    color: white;
+    background-color: #2d3560;
+    border: 1px solid white;
+}
+
+.icone-sair{
+    margin-top: 100%;
+}
+
+/**ESTILIZAÇAO CONTEUDO**/
+
+.content-body{
+    padding: 5px;
+}
+.content-body-options{
+    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+    gap: 170px;
+    height: 40px;
+}
+.content-body-options a{
+    text-decoration: none;
+    color: white;
+    background-color: #2d3560;
+    width: 60px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10px;
+    
+}
+
+
+
+
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+table:not(:first-of-type){
+    margin-top: 50px;
+}
+  
+td, th{
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+}
+
+td{
+    height: 70px;
+    word-wrap: break-word;
+}
+
+
+th{
+    background-color: #2d3560;
+    color: white;
+}
+  
+tr:nth-child(even){
+    background-color: rgb(135, 145, 226);
+}
+
+/***VIEW EDITAR ALUNO***/
+
+.dados{
+    width: 100%;
+    height: calc(100vh - 60px);
+}
+
+.dados-pessoais{
+    width: 50%;
+    text-align: center;
+}
+
+.dados-endereco{
+    width: 50%;
+    background-color: #999;
+    text-align: center;
+}
+
+.conteudo-dados-pessoais{
+    text-align: center;
+    margin: 10% auto;
+    background-color: rgb(135, 145, 226);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.inputs-dados-pessoais label{
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 2px;
+}
+.conteudo-dados-pessoais input{
+    width: 60%;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0;
+    text-align: center;
+    outline-color: rgb(227, 227, 1);
+}
+
+.inputs-dados-pessoais{
+    color: black;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.inputs-dados-pessoais button{
+    width: 25%;
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #2d3560;
+    color: white;
+    border: 1px solid white;
+}
+
+.conteudo-dados-endereco{
+    margin-top: 40%;
+}
+
+/***ESTILIZAÇAO DO CONTENT DA VIEW EXCLUIR USUARIO***/
+
+.content-body-excluir{
+    width: calc(100% - 6px);
+    height: calc(100vh - 55px);
+    display: flex;
+    
+}
+
+.dados-excluir{
+    text-align: center;
+    background-color: rgb(135, 145, 226);
+    width: 40%;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.dados-excluir-itens{
+    margin: auto;
+}
+
+.dados-excluir-itens p{
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: white
+}
+.dados-excluir-itens button{
+    margin: 0 40px 0;
+    font-size: 15px;
+    background-color: #2d3560;
+    color: white;
+    border: 0;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
