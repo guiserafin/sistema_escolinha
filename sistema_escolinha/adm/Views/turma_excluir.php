@@ -4,17 +4,19 @@ if (!defined('C7E3L8K9E58743')) {
     include_once "/var/www/html/Views/professores.php";
 } else {
     $arr_url = explode("?", $_SERVER['REQUEST_URI']);
-    $arr_dados_professor = explode("&", $arr_url[1]);
+    $arr_dados_turma = explode("&", $arr_url[1]);
+    $arr_id_turma = explode("=", $arr_dados_turma[0]);
 
-    $arr_id_professor = explode("=", $arr_dados_professor[0]);
+    $id = $arr_id_turma[1];
 
-    $id = $arr_id_professor[1];
+    $dados_turma = new TurmasController();
 
-    $dados_professor = new ProfessoresController();
+    if($_POST){
 
-    if ($_POST) {
-        $professor_delete = new UsuariosController();
-        $professor_delete->delete($_POST['id']);
+        // var_dump($_POST);
+
+        $dados_turma->delete($_POST['id']);
+        
     }
 
 ?>
@@ -52,7 +54,7 @@ if (!defined('C7E3L8K9E58743')) {
                         <a class="link menu_left_link" href="./disciplinas">Disciplinas</a>
                     </li> -->
                     <li class="menu_left_item">
-                        <a class="link menu_left_link" href="<?php echo DOMINIO_ADM . "/professores" ?>">Voltar</a>
+                        <a class="link menu_left_link" href="<?php echo DOMINIO_ADM . "/turmas" ?>">Voltar</a>
                     </li>
                 </ul>
                 <a class="link" style="color: #2d3560; ;" href="<?= DOMINIO_ADM ?>"><i class="fa fa-sign-out icone-sair fa-5x" aria-hidden="true"></i></a>
@@ -69,21 +71,19 @@ if (!defined('C7E3L8K9E58743')) {
                     <?php
                     if (isset($_SESSION['msg'])) {
                         echo $_SESSION['msg'];
-                        
                     }
                     ?>
                 </div>
                 <!--fim menu top-->
-
                 <div class="content-body-excluir <?php ?>">
                     <div class="dados-excluir" id="dados_excluir">
                         <div class="dados-excluir-itens">
                             <?php
-                            $dados = $dados_professor->professor_editar($id);
+                            $dados = $dados_turma->list_unico($id);
                             ?>
-                            <p>Deseja excluir o usuário <?php echo $dados['nome'] ?>?</p>
+                            <p>Deseja excluir a turma <?php echo $dados[0]['nome'] ?>?</p>
                             <form style="display:inline-block" action="" method="post">
-                                <input type="hidden" name="id" value="<?= $dados[0] ?>">
+                                <input type="hidden" name="id" value="<?= $dados[0]['id'] ?>">
                                 <button id="btn_confirmar" type="submit">Confirmar</button>
                             </form>
                             <button><a class="link" href="./">Cancelar</a></button>

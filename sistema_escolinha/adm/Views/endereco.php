@@ -3,8 +3,7 @@
 if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
-    
-    $cursos = new CursosController();
+    $enderecos = new EnderecoController();
 
     ?>
         <!DOCTYPE html>
@@ -26,16 +25,16 @@ if(!defined('C7E3L8K9E58743')){
                         <li class="menu_left_item">
                             <a class="link menu_left_link" href="./dashboard">Alunos</a>
                         </li>
-                        <li class="menu_left_item ">
+                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
-                        <li class="menu_left_item">
+                        <li class="menu_left_item menu_left_item_selected">
                             <a class="link menu_left_link" href="./endereco">Endereços</a>
                         </li>
-                        <li class="menu_left_item ">
+                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
-                        <li class="menu_left_item menu_left_item_selected">
+                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./cursos">Cursos</a>
                         </li>
                         <li class="menu_left_item">
@@ -57,32 +56,34 @@ if(!defined('C7E3L8K9E58743')){
                     </div><!--fim menu top-->
 
                     <div class="content-body p-2">
-                        <div class="cadastrar">
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/cursos/curso_criar" ?>">Cadastrar curso</a>
-                        </div>
-                        <table class="tabela-cursos">
+                    <table class="tabela-cursos">
                             <thead>
                                 <tr>
-                                    <th scope="col">Código</th>
-                                    <th scope="col">Nome Curso</th>
-                                    <th scope="col">Data Início</th>
-                                    <th scope="col">Data Fim</th>
-                                    <th scope="col">Ações</th>
+                                    <th>CEP</th>
+                                    <th>UF</th>
+                                    <th>Cidade</th>
+                                    <th>Bairro</th>
+                                    <th>Logradouro</th>
+                                    <th>Número</th>
+                                    <th>Complemento</th>
+                                    <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                foreach($cursos->list() as $key => $curso){
+                                foreach($enderecos->list() as $key => $endereco){
                                    ?>
                                         <tr>
-                                            <th scope="row"><?= $curso['id']?></th>
-                                            <td><?= $curso['nome']?></td>
-                                            <td><?= date("d/m/Y",strtotime($curso['dataInicio']))?></td>
-                                            <td><?= date("d/m/Y",strtotime($curso['dataFim']))?></td>
+                                            <td><?= $endereco['cep'] ?></td>
+                                            <td><?= $endereco['uf'] ?></td>
+                                            <td><?= $endereco['cidade'] ?></td>
+                                            <td><?= $endereco['bairro'] ?></td>
+                                            <td><?= ucfirst($endereco['logradouro']) ?></td>
+                                            <td><?= $endereco['numero'] ?></td>
+                                            <td><?= $endereco['complemento'] ?></td>
                                             <td>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/disciplinas_listar?id=' . $curso[0] . '&editar=false' ?>">Disciplinas</a>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/curso_editar?id=' . $curso[0] . '&editar=true' ?>">Editar</a>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/curso_excluir?id=' . $curso[0] . '&excluir=true' ?>">Excluir</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/endereco_editar?id=" . $endereco[0] . "&editar=true" ?>">Editar</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/endereco_excluir?id=". $endereco[0] . "&excluir=true"?>">Excluir</a>
                                             </td>
                                         </tr>
                                    <?php

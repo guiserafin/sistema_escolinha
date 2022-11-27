@@ -21,12 +21,14 @@ include_once "./Controllers/CursosController.php";
 include_once "./Controllers/DisciplinasController.php";
 include_once "./Controllers/HomeController.php";
 include_once "./Controllers/EnderecoController.php";
+include_once "./Controllers/HistoricoController.php";
 //Models
 include_once "./Models/UsuarioModel.php";
 include_once "./Models/CursosModel.php";
 include_once "./Models/DisciplinasModel.php";
 include_once "./Models/TurmasModel.php";
 include_once "./Models/EnderecoModel.php";
+include_once "./Models/HistoricoModel.php";
 
 
 

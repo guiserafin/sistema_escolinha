@@ -7,6 +7,45 @@
 
 /***PROPRIEDADES GERAIS***/
 
+.voltar{
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    font-size: 40px;
+    margin-top:40px;
+    margin-bottom: 40px;
+}
+
+.voltar a{
+    background-color: #2d3560;
+    color: white;
+    width: 300px;
+    height: 80px;
+    display: grid;
+    place-items: center;
+}
+
+.cadastrar{
+    background-color: rgb(227, 227, 1);
+    text-align: center;
+    width: 10%;
+    height: 40px;
+    margin: 5px auto;
+    line-height: 40px;
+    border-radius: 10px;
+    border: 1px solid #2d3560;
+}
+
+::-webkit-scrollbar{
+    width: 2px;
+    background-color: rgb(227, 227, 1);
+}
+
+.p-2{
+    padding: 2px !important;
+}
 
 .justify-content-between{
     justify-content: space-between;
@@ -22,6 +61,10 @@
 
 .d-none{
     display: none !important;
+}
+
+.d-hidden{
+    display: hidden !important;
 }
 
 .span-error{
@@ -125,6 +168,9 @@ header{
     display: flex;
 }
 
+
+
+
 .content{
     width: 100%;
 }
@@ -183,9 +229,9 @@ header{
 
 .menu_left_item{
     list-style: none;
-    margin-top: 15px;
     background-color: rgb(227, 227, 1);
-    width: 100%;
+    width: 90%;
+    margin:15px auto;
     border-radius: 10px;
 }
 
@@ -201,8 +247,12 @@ header{
 
 /**ESTILIZAÇAO CONTEUDO**/
 
+
 .content-body{
     padding: 5px;
+    height: calc(100vh - 55px);
+    overflow-y: scroll;
+    width: calc(100% - 5px);
 }
 .content-body-options{
     margin: 5px auto;
@@ -221,9 +271,6 @@ header{
     border-radius: 10px;
     
 }
-
-
-
 
 table{
     font-family: arial, sans-serif;
@@ -260,23 +307,18 @@ tr:nth-child(even){
 
 .dados{
     width: 100%;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 65px);
 }
 
 .dados-pessoais{
+    margin: auto;
     width: 50%;
-    text-align: center;
-}
-
-.dados-endereco{
-    width: 50%;
-    background-color: #999;
     text-align: center;
 }
 
 .conteudo-dados-pessoais{
     text-align: center;
-    margin: 10% auto;
+    margin: auto;
     background-color: rgb(135, 145, 226);
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     width: 80%;
@@ -290,7 +332,7 @@ tr:nth-child(even){
     margin-top: 8px;
     margin-bottom: 2px;
 }
-.conteudo-dados-pessoais input{
+.conteudo-dados-pessoais input, .conteudo-dados-pessoais select{
     width: 60%;
     height: 40px;
     font-size: 16px;
@@ -302,13 +344,13 @@ tr:nth-child(even){
 
 .inputs-dados-pessoais{
     color: black;
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: 20px;
 }
 
 .inputs-dados-pessoais button{
     width: 25%;
-    margin-top: 15px;
+    margin-top: 8px;
     height: 40px;
     border-radius: 5px;
     border: 0;
@@ -320,9 +362,6 @@ tr:nth-child(even){
     border: 1px solid white;
 }
 
-.conteudo-dados-endereco{
-    margin-top: 40%;
-}
 
 /***ESTILIZAÇAO DO CONTENT DA VIEW EXCLUIR USUARIO***/
 
@@ -364,4 +403,346 @@ tr:nth-child(even){
     height: 30px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+/***ESTILIZACAO DISCIPLINAS***/
+
+.content-body-disciplinas{
+    width: calc(100% - 5px);
+    height: calc(100vh - 55px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+.container-disciplinas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.org{
+    
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 250px;
+}
+
+.box-disciplinas{
+    display: inline-block;
+    background-color: rgba(135, 145, 226, 1);
+    margin-top: auto 1px;
+    width: 100%;
+    height: 80%;
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 5px;
+}
+
+.box-disciplinas p{
+    margin-top: 80px;
+}
+
+.acoes-disciplinas{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.acoes-disciplinas a{
+    font-size: 15px;
+    background-color: #2d3560;
+    color: white;
+    border: 0;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 30px;
+}
+/*** VIEW EDITAR DISCIPLINAS***/
+
+
+
+
+/***ESTILIZAÇÃO DA PAGINA CRIAR ALUNO***/
+
+.main-cadastro{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(135, 145, 226);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.dados-cadastro{
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+}
+
+.conteudo-cadastro-dados-pessoais{
+    text-align: center;
+    margin: auto;
+    background-color: rgb(135, 145, 226);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs-cadastro-dados-pessoais label{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+.conteudo-cadastro-dados-pessoais input, .conteudo-cadastro-dados-pessoais select{
+    width: 80%;
+    height: 35px;
+    font-size: 25px;
+    border-radius: 5px;
+    border: 0;
+    text-align: center;
+    outline-color: rgb(227, 227, 1);
+}
+
+.inputs-cadastro-dados-pessoais button{
+    width: 30%;
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #2d3560;
+    color: white;
+    border: 1px solid white;
+}
+.inputs-cadastro-dados-pessoais{
+    color: black;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.inputs-dados-pessoais button{
+    width: 25%;
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #2d3560;
+    color: white;
+    border: 1px solid white;
+}
+
+/***VIEW CURSOS***/
+
+.tabela-cursos button{
+    background-color: #2d3560;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    height: 30px;
+    width: 80px;
+    border-radius: 8px;
+}
+
+.tabela-cursos th, td{
+    text-align: center;
+}
+
+.tabela-cursos a{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    background-color: #2d3560;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    height: 30px;
+    width: 80px;
+    border-radius: 8px;
+    line-height: 30px;
+}
+
+
+/*** VIEW TURMAS ***/
+
+.content-body-turmas{
+    width: calc(100% - 5px);
+    height: calc(100vh - 55px);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.container-geral{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    
+}
+
+.container-turmas{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    flex-wrap: wrap;
+}
+.box-turmas{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.box-turma{
+    background-color: rgb(135, 145, 226);
+    margin-right: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 250px;
+    font-size: 30px;
+}
+
+.acoes-turma{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+.acoes-turma a{
+    width: 63px;
+    height: 40px;
+    background-color: #2d3560;
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    border-radius: 5px;
+}
+
+.alunos{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.alunos h2{
+    color: black;
+    background-color: rgb(227, 227, 1);
+    border-radius: 10px;
+    margin: 10px auto;
+    width: auto;
+    padding: 10px;
+}
+
+/*** VIEW TURMAS CRIAR***/
+
+.content-body-turmas-cadastrar{
+    width: calc(100% - 5px);
+    height: calc(100vh - 55px);
+    display: flex;
+    justify-content: center;
+}
+
+.card-cadastro{
+    margin: auto;
+    background-color: rgb(135, 145, 226);
+    width: 30%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.card-cadastro form div{
+    margin-top: 80px;
+}
+
+.card-cadastro form label{
+    font-size: 20px;
+}
+
+.card-cadastro form input, .card-cadastro form select{
+    width: 80%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    outline-color: rgb(227, 227, 1);
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.card-cadastro form button{
+    width: 50%;
+    height: 40px;
+    color: black;
+    background-color: rgb(227, 227, 1);
+    border: 0;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
+
+}
+
+
+/***VIEW CURSO EDITAR***/
+
+.card-curso{
+    margin: auto;
+    background-color: rgb(135, 145, 226);
+    width: 30%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.card-curso form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.card-curso form label{
+    font-size: 20px;
+}
+
+.card-curso form input, .card-curso form select{
+    width: 80%;
+    height: 50px;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.card-curso form button{
+    width: 50%;
+    height: 40px;
+    color: black;
+    background-color: rgb(227, 227, 1);
+    border: 0;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
 }

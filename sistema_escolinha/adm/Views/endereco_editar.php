@@ -1,27 +1,21 @@
 <?php
 session_start();
 if(!defined('C7E3L8K9E58743')){
-    include_once "/var/www/html/Views/dashboard.php";
+    include_once "/var/www/html/Views/professores.php";
 }else{
     $arr_url = explode("?", $_SERVER['REQUEST_URI']);
-    $arr_dados_aluno = explode("&",$arr_url[1]);
+    $arr_dados_endereco = explode("&",$arr_url[1]);
+    $arr_id_endereco = explode("=", $arr_dados_endereco[0]);
+
+    $id = $arr_id_endereco[1];
+    $dados_endereco = new EnderecoController();
 
     if($_POST){
-        if(count($_POST) == 8){ //POST do endereco eh um array de tamanho 8
-            $dados_edit = new EnderecoController();
-            $dados_edit->edit($_POST);
-        }else{
 
-            $dados_edit = new UsuariosController();
-            $dados_edit->edit($_POST);
-        }
+        $dados_edit = new EnderecoController();
+        $dados_edit->edit($_POST);  
+
     }
-
-    $arr_id_aluno = explode("=", $arr_dados_aluno[0]);
-    
-    $id = $arr_id_aluno[1];
-
-    $dados_aluno = new DashboardController();
     ?>
         <!DOCTYPE html>
         <html lang="pt-br">
@@ -55,7 +49,7 @@ if(!defined('C7E3L8K9E58743')){
                             <a class="link menu_left_link" href="./disciplinas">Disciplinas</a>
                         </li> -->
                         <li class="menu_left_item">
-                            <a class="link menu_left_link" href="<?php echo DOMINIO_ADM . "/dashboard" ?>">Voltar</a>
+                            <a class="link menu_left_link" href="<?php echo DOMINIO_ADM . "/endereco" ?>">Voltar</a>
                         </li>
                     </ul>
                     <a class="link" style="color: #2d3560; ;" href="<?= DOMINIO_ADM ?>"><i class="fa fa-sign-out icone-sair fa-5x" aria-hidden="true"></i></a>
@@ -80,70 +74,20 @@ if(!defined('C7E3L8K9E58743')){
                     <div class="content-body">
                         <div class="dados d-flex">
                             <?php
-                                $dados = $dados_aluno->aluno_editar($id);
+                                $dados = $dados_endereco->list_unico($id);
                             ?>
                             <div class="dados-pessoais">
                                 <div class="conteudo-dados-pessoais">
                                     <div class="inputs-dados-pessoais">
                                         <form action="" method="post">
-                                            <input type="hidden" name="id" value="<?= $dados[0] ?>">
-                                            <div>
-                                                <label for="nome">Nome</label>
-                                                <input  type="text" name="nome" id="nome" value="<?= $dados['nome'] ?>">
-                                            </div>
-                                            <div>
-                                                <label for="idade">Idade</label>
-                                                <input  type="number" name="idade" id="idade" value="<?= $dados['idade'] ?>">
-                                            </div>
-                                            <div>
-                                                <label for="nascimento">Nascimento</label>
-                                                <input  type="date" name="nascimento" id="nascimento" value="<?= $dados['dataNascimento'] ?>">
-                                            </div>
-                                            <div>
-                                                <label for="email">Email</label>
-                                                <input  type="email" name="email" id="email" value="<?= $dados['email'] ?>">
-                                            </div>
-                                            <div>
-                                                <label for="cpf">CPF</label>
-                                                <input  type="text" name="cpf" id="cpf" value="<?= $dados['cpf'] ?>">
-                                            </div>
-                                            <div>
-                                                <label for="nome">RG</label>
-                                                <input  type="text" name="rg" id="rg" value="<?= $dados['rg'] ?>">
-                                            </div>
-                                            <div>
-                                                <label for="sexo">Sexo</label>
-                                                <input  type="text" name="sexo" id="sexo" value="<?= $dados['sexo'] ?>">
-                                            </div>
-                                            <div>
-                                                <label for="telefone">Telefone</label>
-                                                <input  type="text" name="telefone" id="telefone" value="<?= $dados['telefone'] ?>">
-                                            </div>
-                                            <div>
-                                                <label for="matricula">Matrícula</label>
-                                                <input  type="text" name="matricula" id="matricula" value="<?= $dados['matricula'] ?>">
-                                            </div>
-                                            <div>
-                                                <button type="submit">Editar</button>
-                                            </div>    
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="dados-pessoais">
-                                <div class="conteudo-dados-pessoais">
-                                    <div class="inputs-dados-pessoais">
-                                        <form action="" method="post">
-                                            <input type="hidden" name="endereco_id" value="<?= $dados['endereco_id'] ?>">
+                                            <input type="hidden" name="endereco_id" value="<?= $dados[0] ?>">
                                             <div> 
                                                 <label for="cep">CEP</label>
-                                                <input  type="text" name="cep" id="cep" value="<?=$dados['cep'] ?>">
+                                                <input  type="text" name="cep" id="cep" value="<?= $dados['cep'] ?>">
                                             </div>
                                             <div>
                                                 <label for="uf">UF</label>
-                                                <input  type="text" name="uf" id="uf" value="<?= $dados['uf']?>">
+                                                <input  type="text" name="uf" id="uf" value="<?= $dados['uf'] ?>">
                                             </div>
                                             <div>
                                                 <label for="cidade">Cidade</label>
@@ -151,7 +95,7 @@ if(!defined('C7E3L8K9E58743')){
                                             </div>
                                             <div>
                                                 <label for="Bairro">Bairro</label>
-                                                <input  type="text" name="bairro" id="bairro" value="<?= $dados['bairro']?>">
+                                                <input  type="text" name="bairro" id="bairro" value="<?= $dados['bairro'] ?>">
                                             </div>
                                             <div>
                                                 <label for="logradouro">Logradouro</label>
@@ -171,13 +115,11 @@ if(!defined('C7E3L8K9E58743')){
                                         </form>
                                     </div>
                                 </div>
-                            </div><!--fim dados-endereco-->
+                            </div>
                         </div>
                     </div>
                 </div>
             </main>
         </body>
-        </html>
     <?php
 }
-

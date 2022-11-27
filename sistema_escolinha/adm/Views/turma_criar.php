@@ -3,8 +3,17 @@
 if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
-    
+    $turmas = new TurmasController();
     $cursos = new CursosController();
+    
+
+    if($_POST){
+        $nome_turma = $_POST['nome'];
+        $nome_curso = $_POST['curso'];
+
+        $turmas->create($nome_turma,$nome_curso);
+
+    }
 
     ?>
         <!DOCTYPE html>
@@ -23,7 +32,7 @@ if(!defined('C7E3L8K9E58743')){
                 <aside class="menu-left">
                     <img src="../assets/images/2.png" alt="Logo sci">
                     <ul>
-                        <li class="menu_left_item">
+                        <!-- <li class="menu_left_item">
                             <a class="link menu_left_link" href="./dashboard">Alunos</a>
                         </li>
                         <li class="menu_left_item ">
@@ -32,14 +41,17 @@ if(!defined('C7E3L8K9E58743')){
                         <li class="menu_left_item">
                             <a class="link menu_left_link" href="./endereco">Endereços</a>
                         </li>
-                        <li class="menu_left_item ">
+                        <li class="menu_left_item menu_left_item_selected">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
-                        <li class="menu_left_item menu_left_item_selected">
+                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./cursos">Cursos</a>
                         </li>
                         <li class="menu_left_item">
                             <a class="link menu_left_link" href="./disciplinas">Disciplinas</a>
+                        </li> -->
+                        <li class="menu_left_item">
+                            <a class="link menu_left_link" href="<?php echo DOMINIO_ADM . "/turmas" ?>">Voltar</a>
                         </li>
                     </ul>
                     <a class="link" style="color: #2d3560; ;" href="./home.php"><i class="fa fa-sign-out icone-sair fa-5x" aria-hidden="true"></i></a>
@@ -53,43 +65,38 @@ if(!defined('C7E3L8K9E58743')){
                             $arr_nome = explode(" ",$_SESSION['nome']); //divir o nome em um array quando separado por espaço
                             echo $arr_nome[0]." ".end($arr_nome);
                         ?>
-
+                        <?php
+                            if(isset($_SESSION['msg'])){
+                                echo $_SESSION['msg'];
+                                unset($_SESSION['msg']);
+                            }
+                        ?>
                     </div><!--fim menu top-->
 
-                    <div class="content-body p-2">
-                        <div class="cadastrar">
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/cursos/curso_criar" ?>">Cadastrar curso</a>
+                    <div class="content-body-turmas-cadastrar p-2">
+                        <div class="card-cadastro">
+                            <form action="" method="post">
+                                <div>
+                                    <div><label for="nome">Nome da turma</label></div>
+                                    <input type="text" name="nome" id="nome">
+                                </div>
+                                <div>
+                                    <div><label for="curso">Curso</label></div>
+                                    <select name="curso" id="curso">
+                                        <?php
+                                            foreach($cursos->list() as $key => $curso){
+                                                ?>
+                                                    <option value="<?= $curso['nome'] ?>"><?= $curso['nome'] ?></option>
+                                                <?php
+                                            } 
+                                        ?>
+                                    </select>
+                                </div>
+                                <div>
+                                    <button type="submit">Cadastrar</button>
+                                </div>
+                            </form>
                         </div>
-                        <table class="tabela-cursos">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Código</th>
-                                    <th scope="col">Nome Curso</th>
-                                    <th scope="col">Data Início</th>
-                                    <th scope="col">Data Fim</th>
-                                    <th scope="col">Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach($cursos->list() as $key => $curso){
-                                   ?>
-                                        <tr>
-                                            <th scope="row"><?= $curso['id']?></th>
-                                            <td><?= $curso['nome']?></td>
-                                            <td><?= date("d/m/Y",strtotime($curso['dataInicio']))?></td>
-                                            <td><?= date("d/m/Y",strtotime($curso['dataFim']))?></td>
-                                            <td>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/disciplinas_listar?id=' . $curso[0] . '&editar=false' ?>">Disciplinas</a>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/curso_editar?id=' . $curso[0] . '&editar=true' ?>">Editar</a>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/curso_excluir?id=' . $curso[0] . '&excluir=true' ?>">Excluir</a>
-                                            </td>
-                                        </tr>
-                                   <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </main>

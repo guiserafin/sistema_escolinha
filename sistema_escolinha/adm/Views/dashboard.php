@@ -28,6 +28,9 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
                         <li class="menu_left_item">
+                            <a class="link menu_left_link" href="./endereco">Endereços</a>
+                        </li>
+                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
                         <li class="menu_left_item">
@@ -52,41 +55,44 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
                     </div><!--fim menu top-->
 
                     <div class="content-body">
-                        <?php
-                            if(count($alunos->listAlunos()) > 0){
-
+                        <div class="cadastrar">
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/dashboard/aluno_criar"?>">Cadastrar Aluno</a>
+                        </div>
+                        <table class="tabela-cursos">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>CPF</th>
+                                    <th>RG</th>
+                                    <th>Sexo</th>
+                                    <th>Telefone</th>
+                                    <th>Matrícula</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
                                 foreach($alunos->listAlunos() as $key => $aluno){
-                                    ?>
-                                    <table>
+                                   ?>
                                         <tr>
-                                            <th>Nome</th>
-                                            <th>Email</th>
-                                            <th>CPF</th>
-                                            <th>RG</th>
-                                            <th>Sexo</th>
-                                            <th>Telefone</th>
-                                            <th>Matrícula</th>
+                                            <td><?= $aluno['nome'] ?></td>
+                                            <td><?= $aluno['email'] ?></td>
+                                            <td><?= $aluno['cpf'] ?></td>
+                                            <td><?= $aluno['rg'] ?></td>
+                                            <td><?= ucfirst($aluno['sexo']) ?></td>
+                                            <td><?= $aluno['telefone'] ?></td>
+                                            <td><?= $aluno['matricula'] ?></td>
+                                            <td>
+                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/aluno_editar?id=" . $aluno['id'] . "&editar=true" ?>">Editar</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/aluno_excluir?id=". $aluno['id'] . "&excluir=true"?>">Excluir</a>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <td><?php echo $aluno['nome'] ?></td>
-                                            <td><?php echo $aluno['email'] ?></td>
-                                            <td><?php echo $aluno['cpf'] ?></td>
-                                            <td><?php echo $aluno['rg'] ?></td>
-                                            <td><?php echo ucfirst($aluno['sexo']) ?></td>
-                                            <td><?php echo $aluno['telefone'] ?></td>
-                                            <td><?php echo $aluno['matricula'] ?></td>
-                                        </tr>
-                                    </table>
-                                    <div class="content-body-options">
-                                        <a href="<?php echo DOMINIO_ADM . "/dashboard/aluno_editar?id=" . $aluno['id'] . "&editar=true" ?>">Editar</a>
-                                        <a href="<?php echo DOMINIO_ADM . "/dashboard/aluno_excluir?id=". $aluno['id'] . "&excluir=true"?>">Excluir</a>
-                                    </div>
-                                    <?php
+                                   <?php
                                 }
-                            }else{
-                                echo "Não há alunos cadastrados";
-                            }
-                        ?>
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </main>

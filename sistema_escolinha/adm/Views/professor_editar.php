@@ -16,6 +16,7 @@ if(!defined('C7E3L8K9E58743')){
             $dados_edit = new EnderecoController();
             $dados_edit->edit($_POST);
         }else{
+
             $dados_edit = new UsuariosController();
             $dados_edit->edit($_POST);
         }
@@ -39,23 +40,8 @@ if(!defined('C7E3L8K9E58743')){
                 <aside class="menu-left">
                     <img src="../assets/images/2.png" alt="Logo sci">
                     <ul>
-                        <!-- <li class="menu_left_item menu_left_item_selected">
-                            <a class="link menu_left_link" href="./dashboard">Alunos</a>
-                        </li>
                         <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./professores">Professores</a>
-                        </li>
-                        <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./turmas">Turmas</a>
-                        </li>
-                        <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./cursos">Cursos</a>
-                        </li>
-                        <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./disciplinas">Disciplinas</a>
-                        </li> -->
-                        <li class="menu_left_item">
-                            <a class="link menu_left_link" href="<?php echo DOMINIO_ADM . "/dashboard" ?>">Voltar</a>
+                            <a class="link menu_left_link" href="<?php echo DOMINIO_ADM . "/professores" ?>">Voltar</a>
                         </li>
                     </ul>
                     <a class="link" style="color: #2d3560; ;" href="<?= DOMINIO_ADM ?>"><i class="fa fa-sign-out icone-sair fa-5x" aria-hidden="true"></i></a>
@@ -81,6 +67,7 @@ if(!defined('C7E3L8K9E58743')){
                         <div class="dados d-flex">
                             <?php
                                 $dados = $dados_professor->professor_editar($id);
+                                $turmas = new TurmasController();
                             ?>
                             <div class="dados-pessoais">
                                 <div class="conteudo-dados-pessoais">
@@ -113,15 +100,25 @@ if(!defined('C7E3L8K9E58743')){
                                             </div>
                                             <div>
                                                 <label for="sexo">Sexo</label>
-                                                <input  type="text" name="sexo" id="sexo" value="<?= $dados['sexo'] ?>">
+                                                <input  type="text" name="sexo" id="sexo" value="<?= ucfirst($dados['sexo']) ?>">
                                             </div>
                                             <div>
                                                 <label for="telefone">Telefone</label>
                                                 <input  type="text" name="telefone" id="telefone" value="<?= $dados['telefone'] ?>">
                                             </div>
                                             <div>
-                                                <label for="matricula">Turma</label>
-                                                <input  type="text" name="matricula" id="matricula" value="<?= $dados['nome_turma'] ?>">
+                                                <label for="nome_turma">Turma</label>
+                                                <select name="nome_turma" id="nome_turma">
+                                                    <?php
+                                                        foreach($turmas->list() as $key => $turma){
+                                                            ?>
+                                                            <option value="<?= $turma['nome'] ?>">
+                                                                <?php echo $turma['nome'] ?>
+                                                            </option>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                </select>
                                             </div>
                                             <div>
                                                 <button type="submit">Editar</button>
@@ -130,8 +127,7 @@ if(!defined('C7E3L8K9E58743')){
                                     </div>
                                 </div>
                             </div>
-
-
+                            
                             <div class="dados-pessoais">
                                 <div class="conteudo-dados-pessoais">
                                     <div class="inputs-dados-pessoais">
@@ -139,11 +135,11 @@ if(!defined('C7E3L8K9E58743')){
                                             <input type="hidden" name="endereco_id" value="<?= $dados['endereco_id'] ?>">
                                             <div> 
                                                 <label for="cep">CEP</label>
-                                                <input  type="text" name="cep" id="cep" value="<?= $dados['cep'] ?>">
+                                                <input  type="text" name="cep" id="cep" value="<?=$dados['cep'] ?>">
                                             </div>
                                             <div>
                                                 <label for="uf">UF</label>
-                                                <input  type="text" name="uf" id="uf" value="<?= $dados['uf'] ?>">
+                                                <input  type="text" name="uf" id="uf" value="<?= $dados['uf']?>">
                                             </div>
                                             <div>
                                                 <label for="cidade">Cidade</label>
@@ -151,7 +147,7 @@ if(!defined('C7E3L8K9E58743')){
                                             </div>
                                             <div>
                                                 <label for="Bairro">Bairro</label>
-                                                <input  type="text" name="bairro" id="bairro" value="<?= $dados['bairro'] ?>">
+                                                <input  type="text" name="bairro" id="bairro" value="<?= $dados['bairro']?>">
                                             </div>
                                             <div>
                                                 <label for="logradouro">Logradouro</label>
@@ -171,7 +167,7 @@ if(!defined('C7E3L8K9E58743')){
                                         </form>
                                     </div>
                                 </div>
-                            </div>
+                            </div><!--fim dados-endereco-->
                         </div>
                     </div>
                 </div>

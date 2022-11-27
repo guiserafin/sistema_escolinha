@@ -3,7 +3,7 @@
 if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
-    $alunos = new UsuariosController();
+    $disciplinas = new DisciplinasController();
 
     ?>
         <!DOCTYPE html>
@@ -27,6 +27,9 @@ if(!defined('C7E3L8K9E58743')){
                         </li>
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./professores">Professores</a>
+                        </li>
+                        <li class="menu_left_item">
+                            <a class="link menu_left_link" href="./endereco">Endereços</a>
                         </li>
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
@@ -52,8 +55,27 @@ if(!defined('C7E3L8K9E58743')){
 
                     </div><!--fim menu top-->
 
-                    <div class="content-body p-2">
-                        Mostrar as disciplinas
+                    <div class="content-body-disciplinas p-2">
+                        <div class="cadastrar">
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/disciplina_criar" ?>">Criar disciplina</a>
+                        </div>
+                        <div class="container-disciplinas">
+                            <?php
+                                forEach($disciplinas->list() as $key => $disciplina){
+                                    ?>
+                                        <div class="org">
+                                            <div class="box-disciplinas">
+                                            <?php echo "<p>" . $disciplina['nome']. "</p>"; ?>
+                                            </div>
+                                            <div class="acoes-disciplinas">
+                                                <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/disciplina_editar?id=" . $disciplina[0] . "&editar=true"?>">Editar</a>
+                                                <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/disciplina_excluir?id=" .$disciplina[0] . "&excluir=true" ?>">Excluir</a>
+                                            </div>
+                                        </div>
+                                <?php      
+                                }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </main>

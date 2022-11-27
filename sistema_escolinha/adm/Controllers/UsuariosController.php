@@ -24,8 +24,17 @@ class UsuariosController
 
     }
 
-    public function create(){
+    public function createAluno($dados){
 
+        $criar_aluno = new UsuarioModel();
+        return $criar_aluno->cadastrarAluno($dados);
+
+    }
+
+    public function createProfessor($dados){
+
+        $criar_professor = new UsuarioModel();
+        return $criar_professor->cadastrarProfessor($dados);
 
     }
 
@@ -39,7 +48,7 @@ class UsuariosController
     public function edit($dados){
        
         $dados_editar = new UsuarioModel();
-        return $dados_editar->editarDadosAluno($dados);
+        return $dados_editar->editarDadosUser($dados);
 
     }
 }

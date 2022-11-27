@@ -13,6 +13,7 @@ if(!defined('C7E3L8K9E58743')){
     $dados_aluno = new DashboardController();
 
     if($_POST){
+
         $aluno_delete = new UsuariosController();
         $aluno_delete->delete($_POST['id']);
 
@@ -68,7 +69,6 @@ if(!defined('C7E3L8K9E58743')){
                     <?php
                         if(isset($_SESSION['msg'])){
                             echo $_SESSION['msg'];
-                            unset($_SESSION['msg']);
                         }
                     ?>
                 </div><!--fim menu top-->
@@ -77,7 +77,7 @@ if(!defined('C7E3L8K9E58743')){
                     <div class="dados-excluir" id="dados_excluir">
                         <div class="dados-excluir-itens">
                             <?php
-                                $dados = $dados_aluno->aluno_editar($id);
+                                $dados = $dados_aluno->aluno_show_excluir($id);
                             ?>
                             <p>Deseja excluir o usuário <?php echo $dados['nome'] ?>?</p>
                             <form style="display:inline-block" action="" method="post">
@@ -89,14 +89,17 @@ if(!defined('C7E3L8K9E58743')){
                 </div>
             </div>
         </main>
-        <script>
-            const botao = document.getElementById('btn_confirmar');
-            botao.addEventListener('click', () =>{ 
+        <?php
+        if (isset($_SESSION['msg'])) {
+            unset($_SESSION['msg']);
+        ?>
+            <script>
                 let confirmacao = document.getElementById('dados_excluir');
                 confirmacao.classList.add('d-none');
-                
-            });
-        </script>
+            </script>
+        <?php
+        }
+        ?>
     </body>
     </html>
 <?php

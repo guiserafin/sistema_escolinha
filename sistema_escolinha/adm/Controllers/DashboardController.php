@@ -15,4 +15,11 @@ class DashboardController
         $aluno_del->excluirUsuario($id);
 
     }
+
+    public function aluno_show_excluir($id){
+
+        $aluno_show_del = new UsuarioModel();
+        return $aluno_show_del->listarUserExcluir($id);
+
+    }
 }
