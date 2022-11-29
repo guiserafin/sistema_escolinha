@@ -83,31 +83,59 @@ if(!defined('C7E3L8K9E58743')){
                                             <input type="hidden" name="endereco_id" value="<?= $dados[0] ?>">
                                             <div> 
                                                 <label for="cep">CEP</label>
-                                                <input  type="text" name="cep" id="cep" value="<?= $dados['cep'] ?>">
+                                                <input  type="text" name="cep" id="cep" value="<?= $dados['cep'] ?>" maxlength="9">
                                             </div>
                                             <div>
                                                 <label for="uf">UF</label>
-                                                <input  type="text" name="uf" id="uf" value="<?= $dados['uf'] ?>">
+                                                <select name="uf" id="uf">
+                                                    <option value="Acre (AC)">Acre (AC)</option>
+                                                    <option value="Alagoas (AL)">Alagoas (AL)</option>
+                                                    <option value="Amapá (AP)">Amapá (AP)</option>
+                                                    <option value="Amazonas (AM)">Amazonas (AM)</option>
+                                                    <option value="Bahia (BA)">Bahia (BA)</option>
+                                                    <option value="Ceará (CE)">Ceará (CE)</option>
+                                                    <option value="Distrito Federal (DF)">Distrito Federal (DF)</option>
+                                                    <option value="Espírito Santo (ES)">Espírito Santo (ES)</option>
+                                                    <option value="Goiás (GO)">Goiás (GO)</option>
+                                                    <option value="Maranhão (MA)">Maranhão (MA)</option>
+                                                    <option value="Mato Grosso (MT)">Mato Grosso (MT)</option>
+                                                    <option value="Mato Grosso do Sul (MS)">Mato Grosso do Sul (MS)</option>
+                                                    <option value="Minas Gerais (MG)">Minas Gerais (MG)</option>
+                                                    <option value="Pará (PA)">Pará (PA)</option>
+                                                    <option value="Paraíba (PB)">Paraíba (PB)</option>
+                                                    <option value="Paraná (PR)">Paraná (PR)</option>
+                                                    <option value="Pernambuco (PE)">Pernambuco (PE)</option>
+                                                    <option value="Piauí (PI)">Piauí (PI)</option>
+                                                    <option value="Rio de Janeiro (RJ)">Rio de Janeiro (RJ)</option>
+                                                    <option value="Rio Grande do Norte (RN)">Rio Grande do Norte (RN)</option>
+                                                    <option value="Rio Grande do Sul (RS)">Rio Grande do Sul (RS)</option>
+                                                    <option value="Rondônia (RO)">Rondônia (RO)</option>
+                                                    <option value="Roraima (RR)">Roraima (RR)</option>
+                                                    <option value="Santa Catarina (SC)">Santa Catarina (SC)</option>
+                                                    <option value="São Paulo (SP)">São Paulo (SP)</option>
+                                                    <option value="Sergipe (SE)">Sergipe (SE)</option>
+                                                    <option value="Tocantins (TO)">Tocantins (TO)</option>
+                                                </select>
                                             </div>
                                             <div>
                                                 <label for="cidade">Cidade</label>
-                                                <input  type="text" name="cidade" id="cidade" value="<?= $dados['cidade'] ?>">
+                                                <input  type="text" name="cidade" id="cidade" value="<?= $dados['cidade'] ?>" maxlength="200">
                                             </div>
                                             <div>
                                                 <label for="Bairro">Bairro</label>
-                                                <input  type="text" name="bairro" id="bairro" value="<?= $dados['bairro'] ?>">
+                                                <input  type="text" name="bairro" id="bairro" value="<?= $dados['bairro'] ?>" maxlength="200">
                                             </div>
                                             <div>
                                                 <label for="logradouro">Logradouro</label>
-                                                <input  type="text" name="logradouro" id="logradouro" value="<?= $dados['logradouro'] ?>">
+                                                <input  type="text" name="logradouro" id="logradouro" value="<?= $dados['logradouro'] ?>" maxlength="200">
                                             </div>
                                             <div>
                                                 <label for="numero">Numero</label>
-                                                <input  type="text" name="numero" id="numero" value="<?= $dados['numero'] ?>">
+                                                <input  type="text" name="numero" id="numero" value="<?= $dados['numero'] ?>" maxlength="6">
                                             </div>
                                             <div>
                                                 <label for="complemento">Complemento</label>
-                                                <input  type="text" name="complemento" id="complemento" value="<?= $dados['complemento'] ?>">
+                                                <input  type="text" name="complemento" id="complemento" value="<?= $dados['complemento'] ?>" maxlength="200">
                                             </div>
                                             <div>
                                                 <button type="submit">Editar</button>

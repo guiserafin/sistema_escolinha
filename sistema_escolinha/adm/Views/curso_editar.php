@@ -66,7 +66,7 @@ if(!defined('C7E3L8K9E58743')){
                                 <input type="hidden" name="id" id="id" value="<?= $id ?>">
                                 <div>
                                     <div><label for="nome_curso">Nome do curso</label></div>
-                                    <input type="text" name="nome_curso" id="nome_curso" value="<?= $dados[0]['nome_curso']?>">
+                                    <input type="text" name="nome_curso" id="nome_curso" value="<?= $dados[0]['nome_curso']?>" maxlength="50">
                                 </div>
                                 <div>
                                     <div><label for="dataIncio">Data de início</label></div>

@@ -8,12 +8,6 @@ class Core{
 
         $caminho        = file_exists("/var/www/html/Controllers/".$controllerFile.".php"); //true/false
 
-        //var_dump($controllerFile); //Controller
-        //var_dump($caminho); //false
-        //var_dump($controller); //" "
-        //var_dump($metodo);//null
-        //var_dump($parametro); //null
-
         if($caminho){
 
             if(class_exists($controllerFile)){
@@ -40,7 +34,7 @@ class Core{
                     }
 
                     call_user_func_array(array(new $controllerFile, $metodo), $parametro);
-                    include_once "/var/www/html/Views/" . $controller . ".php";
+                    include_once "/var/www/html/Views/" . $metodo . ".php";
 
                 }else{
 

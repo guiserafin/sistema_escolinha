@@ -21,9 +21,9 @@ class HistoricoModel extends ConnectionController
         $sql_historico_query = $this->conn->prepare($sql_historico);
 
         if($sql_historico_query->execute()){
-            $_SESSION['msg'] = "<p>Disciplina adicionada com sucesso</p>";
+            $_SESSION['msg'] = "<p>Disciplina adicionada</p>";
         }else{
-            $_SESSION['msg'] = "<p>Não foi possível adicionar a disciplina</p>";
+            $_SESSION['msg'] = "<p>Erro</p>";
         }
     }
 
@@ -37,7 +37,7 @@ class HistoricoModel extends ConnectionController
         if($sql_query->execute()){
             $_SESSION['msg'] = "<p>Removida com sucesso!</p>";
         }else{
-            $_SESSION['msg'] = "<p>Não foi possivel remover</p>";
+            $_SESSION['msg'] = "<p>Erro</p>";
         }
     }
 }

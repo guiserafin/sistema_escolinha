@@ -64,7 +64,7 @@ if(!defined('C7E3L8K9E58743')){
                             <form action="" method="post">
                                 <div>
                                     <div><label for="disciplina">Nome da disciplina</label></div>
-                                    <input type="text" name="disciplina" id="disciplina" value="<?= $disciplina_dados['nome'] ?>">
+                                    <input type="text" name="disciplina" id="disciplina" value="<?= $disciplina_dados['nome'] ?>" maxlength="50">
                                 </div>
                                 <div>
                                     <button type="submit">Editar</button>

@@ -40,6 +40,9 @@ if(!defined('C7E3L8K9E58743')){
                         <li class="menu_left_item">
                             <a class="link menu_left_link" href="./disciplinas">Disciplinas</a>
                         </li>
+                        <li class="menu_left_item">
+                            <a class="link menu_left_link" href="./avaliacoes">Avaliações</a>
+                        </li>
                     </ul>
                     <a class="link" style="color: #2d3560; ;" href="./home.php"><i class="fa fa-sign-out icone-sair fa-5x" aria-hidden="true"></i></a>
                 </aside>

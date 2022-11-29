@@ -12,7 +12,9 @@ include_once "./Core/Core.php";
 //Config
 include_once "./Config/config.php";
 //Controllers
+include_once "./Controllers/CadastroController.php";
 include_once "./Controllers/ConnectionController.php";
+include_once "./Controllers/DashboardController.php";
 include_once "./Controllers/UsuarioController.php";
 //Models
 include_once "./Models/UsuarioModel.php";
@@ -37,7 +39,7 @@ if (!empty($email) && !empty($senha)){
     
     if($usuario->login($email, $senha) == 1){
 
-        header('Location: ./Views/dashboard.php');
+        header('Location: '.DOMINIO.'/dashboard');
 
     }else{
         include_once "index.php";

@@ -74,9 +74,9 @@ class UsuarioModel extends ConnectionController
         }elseif( ($mesAtual == $mesNasc) && ($diaAtual < $diaNasc) ){
             $idade -= 1;
         }
-        $arr_telefone = explode("-", $dados['telefone']);
+        // $arr_telefone = explode("-", $dados['telefone']);
         
-        $matricula = $anoAtual . "-" . $arr_telefone[1];
+        // $matricula = $anoAtual . "-" . $arr_telefone[1];
         
         $situacao_id = '1';
         $nivelAcesso_id = '2';
@@ -91,7 +91,7 @@ class UsuarioModel extends ConnectionController
     
 
         if($rowCount>0){
-            $_SESION['msg'] = "Email já utilizado - tente outro"; //Esta lógica funcionou, porem o usuario sem ter endereco cadastrado esta dando problema na hora de excluir e editar
+            $_SESION['msg'] = "Email já utilizado - tente outro";
         }else{
 
             
@@ -124,7 +124,8 @@ class UsuarioModel extends ConnectionController
 
 
 
-            $sql = "INSERT INTO `usuarios` (`id`, `nome`, `idade`, `dataNascimento`, `email`, `senha`, `cpf`, `rg`, `sexo`, `telefone`, `matricula`,`situacao_id`, `nivelAcesso_id`, `endereco_id`, `turma_id`, `dateCreate`, `dateModified`) VALUES (NULL,'".$dados['nome']."','".$idade."','".$dados['nascimento']."','".$dados['email']."','".MD5($dados['senha'])."','".$dados['cpf']."','".$dados['rg']."','".$dados['sexo']."','".$dados['telefone']."','".$matricula."','".$situacao_id."','".$nivelAcesso_id."','".$id_endereco."','".$id_turma."','".$dateCreate."',NULL)";
+            $sql = "INSERT INTO `usuarios` (`id`, `nome`, `idade`, `dataNascimento`, `email`, `senha`, `cpf`, `rg`, `sexo`, `telefone`, `matricula`,`situacao_id`, `nivelAcesso_id`, `endereco_id`, `turma_id`, `dateCreate`, `dateModified`) VALUES (NULL,'".$dados['nome']."','".$idade."','".$dados['nascimento']."','".$dados['email']."','".MD5($dados['senha'])."','".$dados['cpf']."','".$dados['rg']."','".$dados['sexo']."','".$dados['telefone']."',NULL,'".$situacao_id."','".$nivelAcesso_id."','".$id_endereco."','".$id_turma."','".$dateCreate."',NULL)";
+           
             $sql_query = $this->conn->prepare($sql);
             if($sql_query->execute()){
                 $_SESSION['msg'] = "Cadastrado com sucesso";
@@ -247,7 +248,7 @@ class UsuarioModel extends ConnectionController
     
 
         if($rowCount>0){
-            $_SESION['msg'] = "Email já utilizado - tente outro";
+            $_SESION['msg'] = "Email já utilizado - tente outro"; 
         }else{
 
 

@@ -168,9 +168,6 @@ header{
     display: flex;
 }
 
-
-
-
 .content{
     width: 100%;
 }
@@ -201,10 +198,6 @@ header{
     cursor: pointer;
     transition: .5s;
 }
-
-/* .menu-top p:focus{
-    display: none;
-} */
 
 .menu-left{
     background-color: rgb(135, 145, 226);

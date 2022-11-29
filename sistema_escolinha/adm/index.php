@@ -12,16 +12,17 @@ include_once "./Core/Core.php";
 //Config
 include_once "./Config/config.php";
 //Controllers
+include_once "./Controllers/AvaliacoesController.php";
 include_once "./Controllers/ConnectionController.php";
-include_once "./Controllers/UsuariosController.php";
-include_once "./Controllers/DashboardController.php";
-include_once "./Controllers/ProfessoresController.php";
-include_once "./Controllers/TurmasController.php";
 include_once "./Controllers/CursosController.php";
+include_once "./Controllers/DashboardController.php";
 include_once "./Controllers/DisciplinasController.php";
-include_once "./Controllers/HomeController.php";
 include_once "./Controllers/EnderecoController.php";
 include_once "./Controllers/HistoricoController.php";
+include_once "./Controllers/HomeController.php";
+include_once "./Controllers/UsuariosController.php";
+include_once "./Controllers/TurmasController.php";
+include_once "./Controllers/ProfessoresController.php";
 //Models
 include_once "./Models/UsuarioModel.php";
 include_once "./Models/CursosModel.php";
@@ -29,6 +30,7 @@ include_once "./Models/DisciplinasModel.php";
 include_once "./Models/TurmasModel.php";
 include_once "./Models/EnderecoModel.php";
 include_once "./Models/HistoricoModel.php";
+include_once "./Models/AvaliacoesModel.php";
 
 
 

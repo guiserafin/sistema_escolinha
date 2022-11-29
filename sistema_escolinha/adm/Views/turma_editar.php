@@ -92,7 +92,7 @@ if(!defined('C7E3L8K9E58743')){
                             <form action="" method="post">
                                 <div>
                                     <div><label for="nome">Nome da turma</label></div>
-                                    <input type="text" name="nome" id="nome" value="<?= $dados['nome'] ?>">
+                                    <input type="text" name="nome" id="nome" value="<?= $dados['nome'] ?>" maxlength="50">
                                 </div>
                                 <div>
                                     <div><label for="curso">Curso</label></div>

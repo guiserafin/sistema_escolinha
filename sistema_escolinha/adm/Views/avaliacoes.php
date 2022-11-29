@@ -1,9 +1,11 @@
 <?php
-session_start();
-if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf']) && !isset($_SESSION['nivelAcesso_id']) && !isset($_SESSION['situacao_id'])){
+
+if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
-    $alunos = new UsuariosController();
+    
+    $avaliacoes = new AvaliacoesController();
+
     ?>
         <!DOCTYPE html>
         <html lang="pt-br">
@@ -21,16 +23,16 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
                 <aside class="menu-left">
                     <img src="../assets/images/2.png" alt="Logo sci">
                     <ul>
-                        <li class="menu_left_item menu_left_item_selected">
+                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./dashboard">Alunos</a>
                         </li>
-                        <li class="menu_left_item">
+                        <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
                         <li class="menu_left_item">
                             <a class="link menu_left_link" href="./endereco">Endereços</a>
                         </li>
-                        <li class="menu_left_item">
+                        <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
                         <li class="menu_left_item">
@@ -39,11 +41,11 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
                         <li class="menu_left_item">
                             <a class="link menu_left_link" href="./disciplinas">Disciplinas</a>
                         </li>
-                        <li class="menu_left_item">
+                        <li class="menu_left_item menu_left_item_selected">
                             <a class="link menu_left_link" href="./avaliacoes">Avaliações</a>
                         </li>
                     </ul>
-                    <a class="link" style="color: #2d3560; ;" href="./home"><i class="fa fa-sign-out icone-sair fa-5x" aria-hidden="true"></i></a>
+                    <a class="link" style="color: #2d3560; ;" href="./home.php"><i class="fa fa-sign-out icone-sair fa-5x" aria-hidden="true"></i></a>
                 </aside>
                 <!--fim menu left-->
                 <div class="content">
@@ -57,38 +59,33 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
 
                     </div><!--fim menu top-->
 
-                    <div class="content-body">
+                    <div class="content-body p-2">
                         <div class="cadastrar">
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/dashboard/aluno_criar"?>">Cadastrar Aluno</a>
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/cursos/curso_criar" ?>">Cadastrar avaliação</a>
                         </div>
+                        <?php $avaliacoes->list() ?>
                         <table class="tabela-cursos">
                             <thead>
                                 <tr>
-                                    <th>Nome</th>
-                                    <th>Email</th>
-                                    <th>CPF</th>
-                                    <th>RG</th>
-                                    <th>Sexo</th>
-                                    <th>Telefone</th>
-                                    <th>Matrícula</th>
-                                    <th>Ações</th>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Nome Avaliação</th>
+                                    <th scope="col">Curso [id]</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                foreach($alunos->listAlunos() as $key => $aluno){
+                                foreach($avaliacoes->list() as $key => $avaliacao){
                                    ?>
                                         <tr>
-                                            <td><?= $aluno['nome'] ?></td>
-                                            <td><?= $aluno['email'] ?></td>
-                                            <td><?= $aluno['cpf'] ?></td>
-                                            <td><?= $aluno['rg'] ?></td>
-                                            <td><?= ucfirst($aluno['sexo']) ?></td>
-                                            <td><?= $aluno['telefone'] ?></td>
-                                            <td><?= $aluno['matricula'] ?></td>
+                                            <th scope="row"><?= $avaliacao['id']?></th>
+                                            <td><?= $avaliacao['nome']?></td>
+                                            <td><?= $avaliacao['disciplina_id']?></td>
+                                            <td><?= date("d/m/Y",strtotime($avaliacao['data']))?></td>
                                             <td>
-                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/aluno_editar?id=" . $aluno['id'] . "&editar=true" ?>">Editar</a>
-                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/aluno_excluir?id=". $aluno['id'] . "&excluir=true"?>">Excluir</a>
+                                                <a href="<?php echo DOMINIO_ADM . '/cursos/curso_editar?id=' . $avaliacao[0] . '&editar=true' ?>">Editar</a>
+                                                <a href="<?php echo DOMINIO_ADM . '/cursos/curso_excluir?id=' . $avaliacao[0] . '&excluir=true' ?>">Excluir</a>
                                             </td>
                                         </tr>
                                    <?php
