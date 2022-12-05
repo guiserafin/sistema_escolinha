@@ -1,0 +1,767 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: arial, sans-serif;
+}
+
+/***PROPRIEDADES GERAIS***/
+
+.criado{
+    width: 600px;
+    height: 80px;
+    text-align: center;
+    background-color: rgb(227, 227, 1);
+    color: white;
+    font-size: 40px;
+    margin: auto;
+    margin-bottom: 10px;
+    display: grid;
+    place-items: center;
+}
+
+.voltar{
+    width: 100%;
+    height: 4rem;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    font-size: 40px;
+    margin-top:40px;
+    margin-bottom: 40px;
+}
+
+
+.voltar a{
+    background-color: #2d3560;
+    color: white;
+    width: 300px;
+    height: 80px;
+    display: grid;
+    place-items: center;
+}
+
+.cadastrar{
+    width: 53%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5px 5px;
+}
+.cadastrar h2{
+    display: grid;
+    place-items: center;
+}
+.cadastrar a{
+    background-color: rgb(227, 227, 1);
+    text-align: center;
+    height: 40px;
+    width: 150px;
+    padding: 2px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    border: 1px solid #2d3560;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.p-2{
+    padding: 2px !important;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+.d-flex{
+    display: flex;
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.d-none{
+    display: none !important;
+}
+
+.d-hidden{
+    display: hidden !important;
+}
+
+.span-error{
+    display: inline-block;
+    width: 80%;
+    margin-top: 4px;
+    font-size: 15px;
+    background-color: #f32e2e;
+    padding: 2px;
+    color: white;
+}
+
+/**TELA DE LOGIN**/
+/*Pagina completa*/
+.geral{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(135, 145, 226);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*cabeçalho com logo*/
+header{
+    background-color: rgb(227, 227, 1);
+    text-align: center;
+}
+
+.logo{
+    width: 100%;
+}
+.logo img{
+    width: 280px;
+}
+
+/*mensagem de bem-vindo*/
+.titulo{
+    margin-top: 200px;
+    color: white;
+    text-decoration: underline;
+}
+
+/*div formulario*/
+.form-login{
+    width: 30%;
+    height:280px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    box-shadow: 1px 1px 2px 1px black;
+    margin-top: 20px;
+}
+
+.email-input{
+    margin-bottom: 20px;
+}
+
+.login input{
+    outline: none;
+    width: 80%;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 10px;
+}
+
+.login label{
+    font-size: 20px;
+}
+
+.form-login p{
+    margin-top: 20px;
+}
+/*botao login*/
+.form-login form button{
+    margin-top: 15px;
+    width: 25%;
+    height: 30px;
+    text-transform: uppercase;
+    border: 1px solid black;
+    background-color: rgb(135, 145, 226);
+    cursor: pointer;
+    box-shadow: 0 5px #999;
+}
+
+.form-login form button:hover{background-color: #2d3560;}
+.form-login form button:active{
+    box-shadow: 0px 1px #999;
+    transform: translateY(4px);
+}
+
+/***ESTILIZAÇÃO DASHBOARD***/
+
+.geral-dashboard{
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+}
+
+.content{
+    width: 100%;
+}
+
+.menu-top{
+    width: calc(100% - 5px);
+    background-color: #2d3560;
+    height: 40px;
+    margin: 5px 5px 5px 0;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+    line-height: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.menu-top p{
+    margin-top: 30px;
+    position: absolute;
+    background-color: #2d3560;
+    width: auto;
+    padding: 5px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    display: grid;
+    place-items: center;
+}
+
+.menu-left{
+    background-color: rgb(135, 145, 226);
+    width: 220px;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 2px;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.menu_left_link{
+    display: block;
+    padding: 5px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.menu-left img{
+    width: 100%;
+}
+
+.menu_left_item{
+    list-style: none;
+    background-color: rgb(227, 227, 1);
+    width: 90%;
+    margin:15px auto;
+    border-radius: 10px;
+}
+
+.menu_left_item_selected{
+    color: white;
+    background-color: #2d3560;
+    border: 1px solid white;
+}
+
+.icone-sair{
+    margin-top: 100%;
+}
+
+/**ESTILIZAÇAO CONTEUDO**/
+
+
+.content-body{
+    padding: 5px;
+    height: calc(100vh - 55px);
+    overflow-y: scroll;
+    width: calc(100% - 5px);
+}
+.content-body-options{
+    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+    gap: 170px;
+    height: 40px;
+}
+.content-body-options a{
+    text-decoration: none;
+    color: white;
+    background-color: #2d3560;
+    width: 60px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 10px;
+    
+}
+
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+table:not(:first-of-type){
+    margin-top: 50px;
+}
+  
+td, th{
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+}
+
+td{
+    height: 70px;
+    word-wrap: break-word;
+}
+
+
+th{
+    background-color: #2d3560;
+    color: white;
+}
+  
+tr:nth-child(even){
+    background-color: rgb(135, 145, 226);
+}
+
+/***VIEW EDITAR ALUNO***/
+
+.dados{
+    width: 100%;
+    height: calc(100vh - 65px);
+}
+
+.dados-pessoais{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.conteudo-dados-pessoais{
+    text-align: center;
+    margin: auto;
+    background-color: rgb(135, 145, 226);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 80%;
+    height: 80%;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.inputs-dados-pessoais label{
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 2px;
+}
+.conteudo-dados-pessoais input, .conteudo-dados-pessoais select{
+    width: 60%;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0;
+    text-align: center;
+    outline-color: rgb(227, 227, 1);
+}
+
+.inputs-dados-pessoais{
+    color: black;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+.inputs-dados-pessoais button{
+    width: 25%;
+    margin-top: 8px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #2d3560;
+    color: white;
+    border: 1px solid white;
+}
+
+
+/***ESTILIZAÇAO DO CONTENT DA VIEW EXCLUIR USUARIO***/
+
+.content-body-excluir{
+    width: calc(100% - 6px);
+    height: calc(100vh - 55px);
+    display: flex;
+    
+}
+
+.dados-excluir{
+    text-align: center;
+    background-color: rgb(135, 145, 226);
+    width: 40%;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.dados-excluir-itens{
+    margin: auto;
+}
+
+.dados-excluir-itens p{
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: white
+}
+.dados-excluir-itens button{
+    margin: 0 40px 0;
+    font-size: 15px;
+    background-color: #2d3560;
+    color: white;
+    border: 0;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/***ESTILIZACAO DISCIPLINAS***/
+
+.content-body-disciplinas{
+    width: calc(100% - 5px);
+    height: calc(100vh - 55px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+.container-disciplinas{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.org{
+    
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 250px;
+}
+
+.box-disciplinas{
+    display: inline-block;
+    background-color: rgba(135, 145, 226, 1);
+    margin-top: auto 1px;
+    width: 100%;
+    height: 80%;
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 5px;
+}
+
+.box-disciplinas p{
+    margin-top: 80px;
+}
+
+.acoes-disciplinas{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.acoes-disciplinas a{
+    font-size: 15px;
+    background-color: #2d3560;
+    color: white;
+    border: 0;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 30px;
+}
+/*** VIEW EDITAR DISCIPLINAS***/
+
+
+
+
+/***ESTILIZAÇÃO DA PAGINA CRIAR ALUNO***/
+
+.main-cadastro{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(135, 145, 226);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.dados-cadastro{
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+}
+
+.conteudo-cadastro-dados-pessoais{
+    text-align: center;
+    margin: auto;
+    background-color: rgb(135, 145, 226);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 50%;
+    height: auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputs-cadastro-dados-pessoais label{
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+.conteudo-cadastro-dados-pessoais input, .conteudo-cadastro-dados-pessoais select{
+    width: 80%;
+    height: 35px;
+    font-size: 25px;
+    border-radius: 5px;
+    border: 0;
+    text-align: center;
+    outline-color: rgb(227, 227, 1);
+}
+
+.inputs-cadastro-dados-pessoais button{
+    width: 30%;
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #2d3560;
+    color: white;
+    border: 1px solid white;
+}
+.inputs-cadastro-dados-pessoais{
+    color: black;
+    margin-top: 0;
+    font-size: 20px;
+}
+
+.inputs-dados-pessoais button{
+    width: 25%;
+    margin-top: 15px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: #2d3560;
+    color: white;
+    border: 1px solid white;
+}
+
+/***VIEW CURSOS***/
+
+.tabela-cursos button{
+    background-color: #2d3560;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    height: 30px;
+    width: 80px;
+    border-radius: 8px;
+}
+
+.tabela-cursos th, td{
+    text-align: center;
+}
+
+.tabela-cursos a{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+    background-color: #2d3560;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    height: 30px;
+    width: 80px;
+    border-radius: 8px;
+    line-height: 30px;
+}
+
+
+/*** VIEW TURMAS ***/
+
+.content-body-turmas{
+    width: calc(100% - 5px);
+    height: calc(100vh - 55px);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.container-geral{
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    
+}
+
+.container-turmas{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    flex-wrap: wrap;
+}
+.box-turmas{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.box-turma{
+    background-color: rgb(135, 145, 226);
+    margin-right: 10px;
+    width: 400px;
+    height: 250px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 250px;
+    font-size: 30px;
+}
+
+.acoes-turma{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+.acoes-turma a{
+    width: 63px;
+    height: 40px;
+    background-color: #2d3560;
+    color: white;
+    text-align: center;
+    padding-top: 12px;
+    border-radius: 5px;
+}
+
+.alunos{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.alunos h2{
+    color: black;
+    background-color: rgb(227, 227, 1);
+    border-radius: 10px;
+    margin: 10px auto;
+    width: auto;
+    padding: 10px;
+}
+
+/*** VIEW TURMAS CRIAR***/
+
+.content-body-turmas-cadastrar{
+    width: calc(100% - 5px);
+    height: calc(100vh - 55px);
+    display: flex;
+    justify-content: center;
+}
+
+.card-cadastro{
+    margin: auto;
+    background-color: rgb(135, 145, 226);
+    width: 30%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.card-cadastro form div{
+    margin-top: 80px;
+}
+
+.card-cadastro form label{
+    font-size: 20px;
+}
+
+.card-cadastro form input, .card-cadastro form select{
+    width: 80%;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    outline-color: rgb(227, 227, 1);
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.card-cadastro form button{
+    width: 50%;
+    height: 40px;
+    color: black;
+    background-color: rgb(227, 227, 1);
+    border: 0;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
+
+}
+
+
+/***VIEW CURSO EDITAR***/
+
+.card-curso{
+    margin: auto;
+    background-color: rgb(135, 145, 226);
+    width: 30%;
+    height: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+}
+
+.card-curso form{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.card-curso form label{
+    font-size: 20px;
+}
+
+.card-curso form input, .card-curso form select{
+    width: 80%;
+    height: 50px;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.card-curso form button{
+    width: 50%;
+    height: 40px;
+    color: black;
+    background-color: rgb(227, 227, 1);
+    border: 0;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 10px;
+}

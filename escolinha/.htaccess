@@ -1,0 +1,16 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^(.*)$ index.php?url=$1
+
+Options -Indexes
+
+ErrorDocument 403 http://localhost:8001/Views/error404.php
+ErrorDocument 404 http://localhost:8001/Views/error404.php
+ErrorDocument 405 http://localhost:8001/Views/error404.php
+ErrorDocument 406 http://localhost:8001/Views/error404.php
+ErrorDocument 407 http://localhost:8001/Views/error404.php
+ErrorDocument 408 http://localhost:8001/Views/error404.php
+ErrorDocument 409 http://localhost:8001/Views/error404.php
+ErrorDocument 500 http://localhost:8001/Views/error404.php
