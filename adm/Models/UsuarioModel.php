@@ -198,6 +198,10 @@ class UsuarioModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
+        $sql_notas = "DELETE FROM `notas` WHERE `usuario_id`=".$id;
+        $sql_notas_query = $this->conn->prepare($sql_notas);
+        $sql_notas_query->execute();
+
         $sql = "DELETE FROM `usuarios` WHERE `id` = $id";
 
         $sql_query = $this->conn->prepare($sql);
