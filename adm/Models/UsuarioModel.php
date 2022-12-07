@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 date_default_timezone_set('America/Sao_Paulo');
 class UsuarioModel extends ConnectionController
 {
@@ -11,18 +11,22 @@ class UsuarioModel extends ConnectionController
 
         $sql = "SELECT * FROM `usuarios` WHERE `email` = '$email' AND `senha` = md5('$senha') AND `situacao_id` = 1 AND `nivelAcesso_id` IN (1,2,4) LIMIT 1";
         $sql_query = $this->conn->prepare($sql);
-        $sql_query->execute();
-        $sql_dados = $sql_query->fetchAll();
+        
+        if($_SESSION['nome'] == ""){
+            
+            $sql_query->execute();
+            $sql_dados = $sql_query->fetchAll();
 
-        $_SESSION['id']             = $sql_dados[0]['id'];
-        $_SESSION['nome']           = $sql_dados[0]['nome'];
-        $_SESSION['cpf']            = $sql_dados[0]['cpf'];
-        $_SESSION['nivelAcesso_id'] = $sql_dados[0]['nivelAcesso_id'];
-        $_SESSION['situacao_id']    = $sql_dados[0]['situacao_id'];
-
-        $rowCount = count($sql_dados);
-
-        return $rowCount;
+            $_SESSION['id']             = $sql_dados[0]['id'];
+            $_SESSION['nome']           = $sql_dados[0]['nome'];
+            $_SESSION['cpf']            = $sql_dados[0]['cpf'];
+            $_SESSION['nivelAcesso_id'] = $sql_dados[0]['nivelAcesso_id'];
+            $_SESSION['situacao_id']    = $sql_dados[0]['situacao_id'];
+    
+            $rowCount = count($sql_dados);
+    
+            return $rowCount;
+        }
 
     }
 

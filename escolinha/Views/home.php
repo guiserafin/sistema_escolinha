@@ -45,7 +45,7 @@ if(!defined('C7E3L8K9E58743')){
                         <button id="btn_login" type="button">Entrar</button>
                     </div>
                 </form>
-                <p>Não possui cadastro? <a style="color:rgb(135, 145, 226)" class="link" href="<?php echo DOMINIO . "/cadastro" ?>">Clique aqui</a></p>
+                <!-- <p>Não possui cadastro? <a style="color:rgb(135, 145, 226)" class="link" href="<?php echo DOMINIO . "/cadastro" ?>">Clique aqui</a></p> -->
             </section>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>

@@ -33,7 +33,7 @@ if(!defined('C7E3L8K9E58743')){
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Área da Admnistração</title>
             <link rel="stylesheet" href="<?php echo DOMINIO_ADM . "/assets/css/style.css"?>">
-            <link rel="stylesheet" href="<?php echo DOMINIO_ADM . "/assets/css/font-awesome.min.css" ?>">
+            <link rel="stylesheet" href="<?php echo DOMINIO_ADM . "/assets/css/font-awesome.min.css" ?>"><link rel="shortcut icon" href="../assets/images/2.png" type="image/x-icon">
         </head>
         <body>
             <main class="geral-dashboard">
