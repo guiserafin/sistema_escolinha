@@ -3,10 +3,19 @@
 class NotasController
 {
 
-    public function create($dados){
+    public function index(){
+        include_once DIR_VIEW . '/notas.php';
+    }
+
+    public function create() {
+        include_once DIR_VIEW . '/nota_criar.php';
+    }
+
+    public function store($dados){
 
         $notas_create = new NotasModel();
-        $notas_create -> cadastrarNota($dados);
+        $notas_create->cadastrarNota($_POST);
+        header("Location: " . $_SERVER['HTTP_REFERER']);
 
     }
 

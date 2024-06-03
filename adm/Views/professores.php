@@ -29,9 +29,6 @@ if(!defined('C7E3L8K9E58743')){
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
                         <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./endereco">Endereços</a>
-                        </li>
-                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
                         <li class="menu_left_item">
@@ -64,7 +61,7 @@ if(!defined('C7E3L8K9E58743')){
                     <div class="content-body p-2">
                         <div class="cadastrar">
                             <h2>Professores Cadastrados</h2>
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/professores/professor_criar"?>">Cadastrar Professor</a>
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/professores/create"?>">Cadastrar Professor</a>
                         </div>
                         <table class="tabela-cursos">
                             <thead>
@@ -73,7 +70,6 @@ if(!defined('C7E3L8K9E58743')){
                                     <th>Email</th>
                                     <th>CPF</th>
                                     <th>RG</th>
-                                    <th>Sexo</th>
                                     <th>Telefone</th>
                                     <th>Turma</th>
                                     <th>Ações</th>
@@ -81,19 +77,18 @@ if(!defined('C7E3L8K9E58743')){
                             </thead>
                             <tbody>
                                 <?php
-                                foreach($professores->listProfessores() as $key => $professor){
+                                foreach($professores->list(3) as $key => $professor){
                                    ?>
                                         <tr>
                                             <td><?= $professor['nome'] ?></td>
                                             <td><?= $professor['email'] ?></td>
                                             <td><?= $professor['cpf'] ?></td>
                                             <td><?= $professor['rg'] ?></td>
-                                            <td><?= ucfirst($professor['sexo']) ?></td>
                                             <td><?= $professor['telefone'] ?></td>
                                             <td><?= $professor['nome_turma'] ?></td>
                                             <td>
-                                                <a href="<?php echo DOMINIO_ADM . "/professores/professor_editar?id=" . $professor[0] . "&editar=true" ?>">Editar</a>
-                                                <a href="<?php echo DOMINIO_ADM . "/professores/professor_excluir?id=". $professor[0] . "&excluir=true"?>">Excluir</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/usuarios/edit/" . $professor['id'] ?>">Editar</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/usuarios/delete/". $professor['id'] ?>">Excluir</a>
                                             </td>
                                         </tr>
                                    <?php

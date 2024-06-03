@@ -9,7 +9,7 @@ if(!defined('C7E3L8K9E58743')){
 
     if($_POST){
         $cursos = new CursosController();
-        $cursos->create($_POST);
+        $cursos->store($_POST);
     }
 
     ?>
@@ -53,7 +53,7 @@ if(!defined('C7E3L8K9E58743')){
                     </div><!--fim menu top-->
                     <div class="content-body-turmas-cadastrar">
                         <div class="card-curso">
-                            <form action="" method="post">
+                            <form action="store" method="post">
                                 <div>
                                     <div><label for="nome_curso">Nome do curso</label></div>
                                     <input type="text" name="nome_curso" id="nome_curso" required>

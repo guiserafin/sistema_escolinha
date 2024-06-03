@@ -9,7 +9,7 @@ class DisciplinasModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT * FROM `disciplinas`";
+        $sql = "SELECT * FROM `disciplina`";
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $sql_dados = $sql_query->fetchAll();
@@ -22,7 +22,7 @@ class DisciplinasModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT * FROM `disciplinas` WHERE `disciplinas`.`id`=" .$id;
+        $sql = "SELECT * FROM `disciplina` WHERE `disciplina`.`id`=" .$id;
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $sql_dados = $sql_query->fetchAll();
@@ -35,9 +35,7 @@ class DisciplinasModel extends ConnectionController
 
         $this->conn = $this->connectDb();
         
-        $dateCreate = date("Y-m-d H:i:s");
-
-        $sql = "INSERT INTO `disciplinas` (`id`, `nome`, `dateCreate`, `dateModified`) VALUES (NULL, '".$nome."', '".$dateCreate."', NULL)";
+        $sql = "INSERT INTO `disciplina` (`nome`) VALUES ('".$nome."')";
         $sql_query = $this->conn->prepare($sql);
         
         if($sql_query->execute()){
@@ -54,7 +52,7 @@ class DisciplinasModel extends ConnectionController
 
         $dateModified = date("Y-m-d H:i:s");
 
-        $sql = "UPDATE `disciplinas` SET `nome` = '".$nome."', `dateModified` = '".$dateModified."' WHERE `disciplinas`.`id` =".$id;
+        $sql = "UPDATE `disciplina` SET `nome` = '".$nome."', `dateModified` = '".$dateModified."' WHERE `disciplina`.`id` =".$id;
         $sql_query = $this->conn->prepare($sql);
 
         if($sql_query->execute()){
@@ -73,7 +71,7 @@ class DisciplinasModel extends ConnectionController
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
 
-        $sql_disciplina = "DELETE FROM `disciplinas` WHERE `disciplinas`.`id`=". $id;
+        $sql_disciplina = "DELETE FROM `disciplina` WHERE `disciplina`.`id`=". $id;
         $sql_disciplina_query = $this->conn->prepare($sql_disciplina);
         
 

@@ -1,13 +1,6 @@
 <?php
 
-
-if(!defined('C7E3L8K9E58743')){
-
-    include_once "/var/www/html/Views/home.php";
-
-}else{
-
-    ?>
+?>
     <!DOCTYPE html>
     <html lang="pt-br">
     <head>
@@ -85,6 +78,4 @@ if(!defined('C7E3L8K9E58743')){
         </script>
     </body>
     </html>
-    <?php
-}
 

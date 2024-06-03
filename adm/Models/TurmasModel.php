@@ -45,20 +45,14 @@ class TurmasModel extends ConnectionController
         }
     }
 
-    public function criarTurma($nome_turma,$nome_curso){
+    public function criarTurma($dados){
 
         $this->conn = $this->connectDb();
 
-        $sql_curso = "SELECT `id` FROM `curso` WHERE `curso`.`nome`='" .$nome_curso."'";
-        $sql_curso_query = $this->conn->prepare($sql_curso);
-        $sql_curso_query->execute();
-        $sql_curso_dados = $sql_curso_query->fetchAll();
-
-        $curso_id = $sql_curso_dados[0]['id'];
-        $dateCreate = date("Y-m-d H:i:s");
+        $curso_id = $dados['curso'];
 
 
-        $sql_turma = "INSERT INTO `turma` (`id`, `nome`, `curso_id`, `dateCreate`, `dateModified`) VALUES (NULL,'".$nome_turma."','".$curso_id."','".$dateCreate."', NULL)";
+        $sql_turma = "INSERT INTO `turma` (`id`, `nome`, `curso_id`) VALUES (NULL,'".$dados['nome']."','".$curso_id."')";
         $sql_turma_query = $this->conn->prepare($sql_turma);
 
         if($sql_turma_query->execute()){
@@ -70,17 +64,9 @@ class TurmasModel extends ConnectionController
 
     }
 
-    public function editarTurma($id_turma, $nome_curso,$nome_turma){
+    public function editarTurma($id_turma, $curso_id, $nome_turma){
 
         $this->conn = $this->connectDb();
-
-        
-        $sql_curso = "SELECT `id` FROM `curso` WHERE `curso`.`nome`='" .$nome_curso."'";
-        $sql_curso_query = $this->conn->prepare($sql_curso);
-        $sql_curso_query->execute();
-        $sql_curso_dados = $sql_curso_query->fetchAll();
-
-        $curso_id = $sql_curso_dados[0]['id'];
 
         $dateModified = date("Y-m-d H:i:s");
 

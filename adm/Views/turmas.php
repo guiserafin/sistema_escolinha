@@ -3,6 +3,7 @@
 if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
+
     $turmas = new TurmasController();
 
     ?>
@@ -27,9 +28,6 @@ if(!defined('C7E3L8K9E58743')){
                         </li>
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./professores">Professores</a>
-                        </li>
-                        <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./endereco">Endereços</a>
                         </li>
                         <li class="menu_left_item menu_left_item_selected">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
@@ -66,7 +64,7 @@ if(!defined('C7E3L8K9E58743')){
 
                         <div class="cadastrar">
                             <h2>Turmas Cadastradas</h2>
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/turmas/turma_criar"?>">Cadastrar Turma</a>
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/turmas/create"?>">Cadastrar Turma</a>
                         </div>
                         <div class="container-turmas">
 
@@ -77,9 +75,9 @@ if(!defined('C7E3L8K9E58743')){
                                     <?php echo "<p>". $turma['nome'] . "</p>" ?>
                                 </div>
                                 <div class="acoes-disciplinas">
-                                    <a class="link" href="<?php echo DOMINIO_ADM . "/turmas/turmas_listar?id=".$turma[0]."&listar=true" ?>">Alunos</a>
-                                    <a class="link" href="<?php echo DOMINIO_ADM . "/turmas/turma_editar?id=".$turma[0]."&editar=true" ?>">Editar</a>
-                                    <a class="link" href="<?php echo DOMINIO_ADM . "/turmas/turma_excluir?id=".$turma[0]."&excluir=true" ?>">Excluir</a>
+                                    <a class="link" href="<?php echo DOMINIO_ADM . "/turmas/list/".$turma['id'] ?>">Alunos</a>
+                                    <a class="link" href="<?php echo DOMINIO_ADM . "/turmas/edit/".$turma['id'] ?>">Editar</a>
+                                    <a class="link" href="<?php echo DOMINIO_ADM . "/turmas/delete/".$turma['id']?>">Excluir</a>
                                 </div>
                             </div>
                             <?php

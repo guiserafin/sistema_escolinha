@@ -29,9 +29,6 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
                         <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./endereco">Endereços</a>
-                        </li>
-                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
                         <li class="menu_left_item">
@@ -64,7 +61,7 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
                     <div class="content-body">
                         <div class="cadastrar">
                             <h2>Alunos Cadastrados</h2>
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/dashboard/aluno_criar"?>">Cadastrar Aluno</a>
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/usuarios/create/aluno"?>">Cadastrar Aluno</a>
                         </div>
                         <table class="tabela-cursos">
                             <thead>
@@ -81,7 +78,7 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
                             </thead>
                             <tbody>
                                 <?php
-                                foreach($alunos->listAlunos() as $key => $aluno){
+                                foreach($alunos->list(2) as $key => $aluno){
                                    ?>
                                         <tr>
                                             <td><?= $aluno['nome'] ?></td>
@@ -92,8 +89,8 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['nome']) && !isset($_SESSION['cpf
                                             <td><?= $aluno['nome_turma']?></td>
                                             <td><?= $aluno['matricula'] ?></td>
                                             <td>
-                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/aluno_editar?id=" . $aluno['id'] . "&editar=true" ?>">Editar</a>
-                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/aluno_excluir?id=". $aluno['id'] . "&excluir=true"?>">Excluir</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/usuarios/edit/" . $aluno['id'] ?>">Editar</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/usuarios/delete/". $aluno['id']?>">Excluir</a>
                                             </td>
                                         </tr>
                                    <?php

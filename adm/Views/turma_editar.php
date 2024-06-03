@@ -4,28 +4,10 @@ if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
     
-    $arr_url = explode("?", $_SERVER['REQUEST_URI']);
-    $arr_dados_turma = explode("&", $arr_url[1]);
-    $arr_id_turma = explode("=", $arr_dados_turma[0]);
-    
-    $id = $arr_id_turma[1];
+    $id = $_GET['id'];
 
-    // var_dump($id);
-    
     $turmas = new TurmasController();
     $cursos = new CursosController();
-    
-
-    if($_POST){
-
-        // var_dump($_POST);
-    
-        $nome_turma = $_POST['nome'];
-        $nome_curso = $_POST['curso'];
-
-        $turmas->edit($id,$nome_curso,$nome_turma);
-
-    }
 
     ?>
         <!DOCTYPE html>
@@ -72,7 +54,8 @@ if(!defined('C7E3L8K9E58743')){
                             <?php
                                 $dados = $turmas->list_unico($id)[0];
                             ?>
-                            <form action="" method="post">
+                            <form action="<?php echo DOMINIO_ADM . '/turmas/update' ?>" method="post">
+                                <input type="hidden" name="id" value="<?php echo $id ?>">
                                 <div>
                                     <div><label for="nome">Nome da turma</label></div>
                                     <input type="text" name="nome" id="nome" value="<?= $dados['nome'] ?>" maxlength="50" required>
@@ -83,7 +66,7 @@ if(!defined('C7E3L8K9E58743')){
                                         <?php
                                             foreach($cursos->list() as $key => $curso){
                                                 ?>
-                                                    <option value="<?= $curso['nome'] ?>"><?= $curso['nome'] ?></option>
+                                                    <option value="<?= $curso['id'] ?>" <?= $curso['id'] == $dados['curso_id'] ? 'selected' : '' ?> ><?= $curso['nome'] ?></option>
                                                 <?php
                                             } 
                                         ?>

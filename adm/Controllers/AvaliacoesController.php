@@ -3,10 +3,20 @@
 class AvaliacoesController
 {
 
-    public function create($dados){
+    public function index(){
+        include_once DIR_VIEW . '/avaliacoes.php';
+    }
+
+    public function create(){
+        include_once DIR_VIEW . '/avaliacao_criar.php';
+    }
+
+    public function store(){
+
 
         $avaliacao_create = new AvaliacoesModel();
-        $avaliacao_create->criarAvaliacao($dados);
+        $avaliacao_create->criarAvaliacao($_POST);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
 
     }
 
@@ -24,17 +34,22 @@ class AvaliacoesController
 
     }
 
-    public function edit($dados){
+    public function edit($id) {
+        $_GET['id'] = $id;
+        include_once DIR_VIEW . '/avaliacao_editar.php';
+    }
+
+    public function update(){
         
         $avaliacao_edit = new AvaliacoesModel();
-        return $avaliacao_edit->editarAvaliacao($dados);
-
+        $avaliacao_edit->editarAvaliacao($_POST);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
     public function delete($id){
-        
         $avaliacao_delete = new AvaliacoesModel();
         $avaliacao_delete->deletarAvaliacao($id);
+        header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 
 }

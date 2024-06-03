@@ -2,6 +2,11 @@
 
 class DashboardController
 {
+
+    public function index(){
+        include_once DIR_VIEW . '/dashboard.php';
+    }
+
     public function aluno_editar($id){
 
         $aluno_edit = new UsuarioModel();

@@ -64,18 +64,18 @@ class CursosModel extends ConnectionController
 
     public function criarCurso($dados){
         
-        $dateCreate = date("Y-m-d H:i:s");
-        
         $this->conn = $this->connectDb();
 
-        $sql= "INSERT INTO `curso` (`id`, `nome`, `dataInicio`, `dataFim`, `dateCreate`, `dateModified`) VALUES (NULL, '".$dados['nome_curso']."', '".$dados['dataInicio']."', '".$dados['dataFim']."', '".$dateCreate."', NULL)";
+        $sql= "INSERT INTO `curso` (`nome`, `dataInicio`, `dataFim`) VALUES ('".$dados['nome_curso']."', '".$dados['dataInicio']."', '".$dados['dataFim']."')";
+
         $sql_query = $this->conn->prepare($sql);
-        
+
         if($sql_query->execute()){
             $_SESSION['msg'] = "<p>Curso criado com sucesso</p>";
         }else{
             $_SESSION['msg'] = "<p>Não foi possível criar o curso</p>";
         }
+    
     }
 
     public function deletarCurso($id){

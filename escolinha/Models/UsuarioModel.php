@@ -9,7 +9,7 @@ class UsuarioModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT * FROM `usuarios` WHERE `email` = '$email' AND `senha` = md5('$senha') AND `situacao_id` = 1 LIMIT 1";
+        $sql = "SELECT * FROM `usuario` WHERE `email` = '$email' AND `senha` = md5('$senha') AND `situacao_id` = 1 LIMIT 1";
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $sql_dados = $sql_query->fetchAll();
@@ -32,7 +32,7 @@ class UsuarioModel extends ConnectionController
         
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT u.*, t.`nome` AS nome_turma FROM `usuarios` AS u INNER JOIN `turma` as t ON (u.`turma_id` = t.`id`) WHERE u.`nivelAcesso_id` = '2' AND u.`turma_id`= '". $turma_id."'";
+        $sql = "SELECT u.*, t.`nome` AS nome_turma FROM `usuario` AS u INNER JOIN `turma` as t ON (u.`turma_id` = t.`id`) WHERE u.`nivelAcesso_id` = '2' AND u.`turma_id`= '". $turma_id."'";
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $sql_dados = $sql_query->fetchAll();
@@ -44,7 +44,7 @@ class UsuarioModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT u.*, t.`nome` AS nome_turma, e.* FROM `usuarios` AS u INNER JOIN `turma` as t ON (u.`turma_id` = t.`id`) INNER JOIN `endereco` AS e ON (u.`endereco_id` = e.`id`) WHERE u.`nivelAcesso_id` = '3' AND u.`turma_id`= '". $turma_id."'";
+        $sql = "SELECT u.*, t.`nome` AS nome_turma, e.* FROM `usuario` AS u INNER JOIN `turma` as t ON (u.`turma_id` = t.`id`) INNER JOIN `endereco` AS e ON (u.`endereco_id` = e.`id`) WHERE u.`nivelAcesso_id` = '3' AND u.`turma_id`= '". $turma_id."'";
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $sql_dados = $sql_query->fetchAll();
@@ -58,7 +58,7 @@ class UsuarioModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT u.*, e.* FROM `usuarios` AS u INNER JOIN `endereco` AS e ON (u.`endereco_id` = e.`id`) WHERE u.`id`=".$id;
+        $sql = "SELECT u.*, e.* FROM `usuario` AS u INNER JOIN `endereco` AS e ON (u.`endereco_id` = e.`id`) WHERE u.`id`=".$id;
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $sql_dados = $sql_query->fetchAll();
@@ -74,9 +74,9 @@ class UsuarioModel extends ConnectionController
         $data = date("Y-m-d H:i:s");
 
         if($dados['senha'] == ""){
-            $sql = "UPDATE `usuarios` SET `nome`='" . $dados['nome'] . "',`idade`='" . $dados['idade'] . "',`dataNascimento`='" . $dados['nascimento'] . "',`email`='" . $dados['email'] . "',`cpf`='" . $dados['cpf'] . "',`rg`='" . $dados['rg'] . "',`sexo`='" . $dados['sexo'] . "',`telefone`='" . $dados['telefone'] . "',`matricula`='" . $dados['matricula'] . "',`dateModified`='$data' WHERE `id` = " . $dados['id'];
+            $sql = "UPDATE `usuario` SET `nome`='" . $dados['nome'] . "',`idade`='" . $dados['idade'] . "',`dataNascimento`='" . $dados['nascimento'] . "',`email`='" . $dados['email'] . "',`cpf`='" . $dados['cpf'] . "',`rg`='" . $dados['rg'] . "',`sexo`='" . $dados['sexo'] . "',`telefone`='" . $dados['telefone'] . "',`matricula`='" . $dados['matricula'] . "',`dateModified`='$data' WHERE `id` = " . $dados['id'];
         }else{
-            $sql = "UPDATE `usuarios` SET `nome`='" . $dados['nome'] . "',`idade`='" . $dados['idade'] . "',`senha` = '".md5($dados['senha'])."',`dataNascimento`='" . $dados['nascimento'] . "',`email`='" . $dados['email'] . "',`cpf`='" . $dados['cpf'] . "',`rg`='" . $dados['rg'] . "',`sexo`='" . $dados['sexo'] . "',`telefone`='" . $dados['telefone'] . "',`matricula`='" . $dados['matricula'] . "',`dateModified`='$data' WHERE `id` = " . $dados['id'];
+            $sql = "UPDATE `usuario` SET `nome`='" . $dados['nome'] . "',`idade`='" . $dados['idade'] . "',`senha` = '".md5($dados['senha'])."',`dataNascimento`='" . $dados['nascimento'] . "',`email`='" . $dados['email'] . "',`cpf`='" . $dados['cpf'] . "',`rg`='" . $dados['rg'] . "',`sexo`='" . $dados['sexo'] . "',`telefone`='" . $dados['telefone'] . "',`matricula`='" . $dados['matricula'] . "',`dateModified`='$data' WHERE `id` = " . $dados['id'];
         }
         $sql_query = $this->conn->prepare($sql);
         

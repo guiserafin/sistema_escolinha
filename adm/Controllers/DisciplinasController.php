@@ -2,7 +2,11 @@
 
 class DisciplinasController{
 
-    public function list(){ //listar as disciplinas
+    public function index(){
+        include_once DIR_VIEW . '/disciplinas.php';
+    }
+
+    public function list(){
 
         $disciplinas_list = new DisciplinasModel();
         return $disciplinas_list->listarDisciplinas();
@@ -14,24 +18,37 @@ class DisciplinasController{
         return $disciplina_list->listarUmaDisciplina($id);
     }
     
-    public function create($nome){
+    public function create(){
 
-        $disciplina_create = new DisciplinasModel();
-        $disciplina_create->criarDisciplina($nome);
-    
+        include_once "/var/www/html/Views/disciplina_criar.php";
     }
 
-    public function edit($nome, $id){
+    public function store(){
+
+        $disciplina_create = new DisciplinasModel();
+        $disciplina_create->criarDisciplina($_POST['disciplina']);
+
+        include_once  DIR_VIEW . "/disciplina_criar.php";
+
+    }
+
+    public function edit($id){
+        $_GET['id'] = $id;
+        include_once DIR_VIEW . '/disciplina_editar.php';
+    }
+
+    public function update(){
 
         $disciplina_edit = new DisciplinasModel();
-        $disciplina_edit->editarDisciplina($nome, $id);
+        $disciplina_edit->editarDisciplina($_POST['disciplina'], $_POST['id']);
+        header('Location:' . $_SERVER['HTTP_REFERER']);
     }
 
     public function delete($id){
         
         $disciplina_delete = new DisciplinasModel();
         $disciplina_delete->excluirDisciplina($id);
-
+        header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 
 }

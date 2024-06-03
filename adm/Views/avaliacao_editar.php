@@ -4,20 +4,12 @@ session_start();
 if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
-    $arr_url = explode("?", $_SERVER['REQUEST_URI']);
-    $arr_dados_avaliacao = explode("&",$arr_url[1]);
-    $arr_id_avaliacao = explode("=", $arr_dados_avaliacao[0]);
-    
-    $id = $arr_id_avaliacao[1];
+
+    $id = $_GET['id'];
     
     $avaliacao = new AvaliacoesController();
     $disciplinas = new DisciplinasController();
     $turmas = new TurmasController();
-    if($_POST){
-
-        $avaliacao->edit($_POST);
-        
-    }
 
     ?>
         <!DOCTYPE html>
@@ -56,7 +48,7 @@ if(!defined('C7E3L8K9E58743')){
                                 echo $_SESSION['msg'];
                                 unset($_SESSION['msg']);
                             }
-                        ?>
+                        ?>id
                     </div><!--fim menu top-->
                     <?php
                         $dados_avalicao = $avaliacao->list_unico($id);
@@ -64,7 +56,7 @@ if(!defined('C7E3L8K9E58743')){
                      ?>
                     <div class="content-body-turmas-cadastrar">
                         <div class="card-curso">
-                            <form action="" method="post">
+                            <form action="<?php echo DOMINIO_ADM . '/avaliacoes/update' ?>" method="post">
                                 <input type="hidden" name="id" id="id" value="<?= $id ?>">
                                 <div>
                                     <div><label for="nome_avaliacao">Nome da avaliação</label></div>

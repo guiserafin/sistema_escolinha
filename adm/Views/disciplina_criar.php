@@ -54,7 +54,7 @@ if(!defined('C7E3L8K9E58743')){
                     </div><!--fim menu top-->
                     <div class="content-body-turmas-cadastrar">
                         <div class="card-curso">
-                            <form action="" method="post">
+                            <form action="store" method="post">
                                 <div>
                                     <div><label for="disciplina">Nome da disciplina</label></div>
                                     <input type="text" name="disciplina" id="disciplina" required>

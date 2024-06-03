@@ -1,11 +1,24 @@
 <?php
 
 class CursosController{
-    
-    public function list(){ //lista todos os cursos
 
-        $cursos_list = new CursosModel();
-        return $cursos_list->listarCursos();
+    public function index(){
+        include_once DIR_VIEW . '/cursos.php';
+    }
+
+    public function create() {
+        include_once DIR_VIEW . '/curso_criar.php';
+    }
+    
+    public function list($id = null){ //lista todos os cursos
+
+        if (!$id){
+            $cursos_list = new CursosModel();
+            return $cursos_list->listarCursos();
+        } else {
+            $_GET['id'] = $id;
+            include_once DIR_VIEW . '/disciplinas_listar.php';
+        }
 
     }
     
@@ -23,17 +36,23 @@ class CursosController{
 
     }
 
-    public function edit($dados){
-
-        $curso_edit = new CursosModel();
-        $curso_edit -> editarCurso($dados);
-
+    public function edit($id){
+        $_GET['id'] = $id;
+        include_once DIR_VIEW . '/curso_editar.php';
     }
 
-    public function create($dados){
+    public function update(){
+        $curso = new CursosModel();
+        $curso->editarCurso($_POST);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
+    public function store(){
 
         $curso_create = new CursosModel();
-        $curso_create->criarCurso($dados);
+        $curso_create->criarCurso($_POST);
+
+        include_once DIR_VIEW . '/curso_criar.php';
 
     }
 
@@ -41,7 +60,7 @@ class CursosController{
 
         $curso_delete = new CursosModel();
         $curso_delete->deletarCurso($id);
-
+        header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 
 }

@@ -9,46 +9,58 @@ class UsuariosController
 
     }
 
+    public function create($prTipo){
 
-    public function listAlunos(){
-
-        $lista_de_alunos = new UsuarioModel();
-        return $lista_de_alunos->listarAlunos();
-
-    }
-
-    public function listProfessores(){
-
-        $lista_de_professores = new UsuarioModel();
-        return $lista_de_professores->listarProfessores();
+        if ($prTipo == 'aluno'){
+            include_once DIR_VIEW . "/aluno_criar.php";
+        } else {
+            include_once DIR_VIEW . "/professor_criar.php";
+        }
 
     }
 
-    public function createAluno($dados){
+    public function store(){
 
-        $criar_aluno = new UsuarioModel();
-        return $criar_aluno->cadastrarAluno($dados);
+        if ($_POST['tipo'] == '3') {
+
+            $criar_professor = new UsuarioModel();
+            $criar_professor->cadastrarProfessor($_POST);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+        } else if ($_POST['tipo'] == '2') {
+
+            $criar_aluno = new UsuarioModel();
+            $criar_aluno->cadastrarAluno($_POST);
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+
+        }
 
     }
 
-    public function createProfessor($dados){
+    public function list($prTipo){
+        $user = new UsuarioModel();
+        return $user->list($prTipo);
+    }
 
-        $criar_professor = new UsuarioModel();
-        return $criar_professor->cadastrarProfessor($dados);
+    public function edit($id) {
 
+        $_GET['id'] = $id;
+        include_once DIR_VIEW . "/aluno_editar.php";
+
+    }
+
+    public function update(){
+        $usuario = new UsuarioModel();
+        $usuario->editarDadosUser($_POST);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
     public function delete($id){
 
         $user_delete = new UsuarioModel();
-        return $user_delete->excluirUsuario($id);
+        $user_delete->excluirUsuario($id);
 
-    }
-
-    public function edit($dados){
-       
-        $dados_editar = new UsuarioModel();
-        return $dados_editar->editarDadosUser($dados);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
 
     }
 }

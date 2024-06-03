@@ -29,9 +29,6 @@ if(!defined('C7E3L8K9E58743')){
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
-                        <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./endereco">Endereços</a>
-                        </li>
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
@@ -65,9 +62,8 @@ if(!defined('C7E3L8K9E58743')){
                     <div class="content-body p-2">
                         <div class="cadastrar">
                             <h2>Avaliações Cadastradas</h2>
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/avaliacoes/avaliacao_criar" ?>">Cadastrar avaliação</a>
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/avaliacoes/create" ?>">Cadastrar avaliação</a>
                         </div>
-                        <?php $avaliacoes->list() ?>
                         <table class="tabela-cursos">
                             <thead>
                                 <tr>
@@ -90,8 +86,8 @@ if(!defined('C7E3L8K9E58743')){
                                             <td><?= $avaliacao['nome_disciplina']?></td>
                                             <td><?= date("d/m/Y",strtotime($avaliacao['data']))?></td>
                                             <td>
-                                                <a href="<?php echo DOMINIO_ADM . '/avaliacoes/avaliacao_editar?id=' . $avaliacao[0] . '&editar=true' ?>">Editar</a>
-                                                <a href="<?php echo DOMINIO_ADM . '/avaliacoes/avaliacao_excluir?id=' . $avaliacao[0] . '&excluir=true' ?>">Excluir</a>
+                                                <a href="<?php echo DOMINIO_ADM . '/avaliacoes/edit/' . $avaliacao['id'] ?>">Editar</a>
+                                                <a href="<?php echo DOMINIO_ADM . '/avaliacoes/delete/' . $avaliacao['id'] ?>">Excluir</a>
                                             </td>
                                         </tr>
                                    <?php

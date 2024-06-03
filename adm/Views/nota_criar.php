@@ -53,12 +53,12 @@ if(!defined('C7E3L8K9E58743')){
                     </div><!--fim menu top-->
                     <div class="content-body-turmas-cadastrar">
                         <div class="card-curso">
-                            <form action="" method="post">
+                            <form action="<?php echo DOMINIO_ADM . '/notas/store' ?>" method="post">
                                 <div>
                                     <div><label for="id_aluno">Aluno</label></div>
                                     <select name="id_aluno" id="id_aluno">
                                         <?php
-                                        foreach($alunos->listAlunos() as $key => $aluno){
+                                        foreach($alunos->list(2) as $key => $aluno){
                                             ?>
                                             <option value="<?=$aluno['id'] ?>"><?=$aluno['nome']?></option>
                                             <?php

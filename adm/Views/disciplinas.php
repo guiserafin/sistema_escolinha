@@ -28,9 +28,6 @@ if(!defined('C7E3L8K9E58743')){
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
-                        <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./endereco">Endereços</a>
-                        </li>
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
@@ -64,7 +61,7 @@ if(!defined('C7E3L8K9E58743')){
                     <div class="content-body-disciplinas p-2">
                         <div class="cadastrar">
                             <h2>Disciplinas Cadastradas</h2>
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/disciplina_criar" ?>">Criar disciplina</a>
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/create" ?>">Criar disciplina</a>
                         </div>
                         <div class="container-disciplinas">
                             <?php
@@ -75,8 +72,8 @@ if(!defined('C7E3L8K9E58743')){
                                             <?php echo "<p>" . $disciplina['nome']. "</p>"; ?>
                                             </div>
                                             <div class="acoes-disciplinas">
-                                                <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/disciplina_editar?id=" . $disciplina[0] . "&editar=true"?>">Editar</a>
-                                                <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/disciplina_excluir?id=" .$disciplina[0] . "&excluir=true" ?>">Excluir</a>
+                                                <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/edit/" . $disciplina['id'] ?>">Editar</a>
+                                                <a class="link" href="<?php echo DOMINIO_ADM . "/disciplinas/delete/" .$disciplina['id']?>">Excluir</a>
                                             </div>
                                         </div>
                                 <?php      

@@ -29,9 +29,6 @@ if(!defined('C7E3L8K9E58743')){
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
-                        <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./endereco">Endereços</a>
-                        </li>
                         <li class="menu_left_item ">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
@@ -65,7 +62,7 @@ if(!defined('C7E3L8K9E58743')){
                     <div class="content-body p-2">
                         <div class="cadastrar">
                             <h2>Cursos Cadastrados</h2>
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/cursos/curso_criar" ?>">Cadastrar curso</a>
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/cursos/create" ?>">Cadastrar curso</a>
                         </div>
                         <table class="tabela-cursos">
                             <thead>
@@ -87,9 +84,9 @@ if(!defined('C7E3L8K9E58743')){
                                             <td><?= date("d/m/Y",strtotime($curso['dataInicio']))?></td>
                                             <td><?= date("d/m/Y",strtotime($curso['dataFim']))?></td>
                                             <td>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/disciplinas_listar?id=' . $curso[0] . '&editar=false' ?>">Disciplinas</a>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/curso_editar?id=' . $curso[0] . '&editar=true' ?>">Editar</a>
-                                                <a href="<?php echo DOMINIO_ADM . '/cursos/curso_excluir?id=' . $curso[0] . '&excluir=true' ?>">Excluir</a>
+                                                <a href="<?php echo DOMINIO_ADM . '/cursos/list/' . $curso['id'] ?>">Disciplinas</a>
+                                                <a href="<?php echo DOMINIO_ADM . '/cursos/edit/' . $curso['id'] ?>">Editar</a>
+                                                <a href="<?php echo DOMINIO_ADM . '/cursos/delete/' . $curso['id'] ?>">Excluir</a>
                                             </td>
                                         </tr>
                                    <?php

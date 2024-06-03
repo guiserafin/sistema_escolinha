@@ -7,12 +7,7 @@ if(!defined('C7E3L8K9E58743')){
     $alunos = new UsuariosController();
     $turma = new TurmasController();
 
-    $arr_url = explode("?", $_SERVER['REQUEST_URI']);
-    $arr_dados_turma = explode("&",$arr_url[1]);
-    $arr_id_turma = explode("=", $arr_dados_turma[0]);
-    
-    $id = $arr_id_turma[1];
-
+    $id = $_GET['id'];
 
     ?>
         <!DOCTYPE html>
@@ -31,21 +26,6 @@ if(!defined('C7E3L8K9E58743')){
             <aside class="menu-left">
                 <img src="../assets/images/2.png" alt="Logo sci">
                 <ul>
-                    <!-- <li class="menu_left_item menu_left_item_selected">
-                        <a class="link menu_left_link" href="./dashboard">Alunos</a>
-                    </li>
-                    <li class="menu_left_item">
-                        <a class="link menu_left_link" href="./professores">Professores</a>
-                    </li>
-                    <li class="menu_left_item">
-                        <a class="link menu_left_link" href="./turmas">Turmas</a>
-                    </li>
-                    <li class="menu_left_item">
-                        <a class="link menu_left_link" href="./cursos">Cursos</a>
-                    </li>
-                    <li class="menu_left_item">
-                        <a class="link menu_left_link" href="./disciplinas">Disciplinas</a>
-                    </li> -->
                     <li class="menu_left_item">
                         <a class="link menu_left_link" href="<?php echo DOMINIO_ADM . "/turmas" ?>">Voltar</a>
                     </li>
@@ -75,7 +55,7 @@ if(!defined('C7E3L8K9E58743')){
                         </thead>
                         <tbody>
                             <?php
-                                foreach($alunos->listAlunos() as $key => $aluno){
+                                foreach($alunos->list(2) as $key => $aluno){
                                     if($aluno['turma_id'] == $id){
                                     ?>
                                     

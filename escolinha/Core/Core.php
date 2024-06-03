@@ -23,6 +23,10 @@ class Core{
                             include_once "/var/www/html/Views/error404.php";
                                 
                     }
+
+                    $controller = new $controllerFile();
+
+                    call_user_func($controller->$metodo, $parametro);
                     
                     include_once "/var/www/html/Views/" . $metodo . ".php";
 

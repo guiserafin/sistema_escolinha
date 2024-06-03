@@ -39,8 +39,8 @@ include_once "./Models/NotasModel.php";
 
 
 $controller = $arr_url[0];
-$metodo = $arr_url[1];
-$parametro = $arr_url[2];
+$metodo     = $arr_url[1];
+$parametro  = $arr_url[2];
 
 $index = new Core();
 $index->index($controller, $metodo, $parametro);
@@ -52,14 +52,15 @@ $senha = trim(filter_input(INPUT_POST,'senha',FILTER_DEFAULT));
 if (!empty($email) && !empty($senha)){
 
     $usuario = new UsuariosController();
-    if($usuario->login($email, $senha) == 1){
-        
+
+    if ($usuario->login($email, $senha) == 1) {
+
         header('Location: ' . DOMINIO_ADM . '/dashboard');
 
-    }else{
+    } else {
         include_once "index.php";
     }
-    
+
 }else{
     include_once "index.php";
 }

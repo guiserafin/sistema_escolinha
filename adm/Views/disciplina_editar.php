@@ -5,20 +5,9 @@ if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
 
-    $arr_url = explode("?" ,$_SERVER['REQUEST_URI']);
-    $arr_url_id = explode("&", $arr_url[1]);
-    $arr_id = explode("=", $arr_url_id[0]);
-    
-    $id = $arr_id[1];
+    $id = $_GET['id'];
     $disciplina = new DisciplinasController();
     $disciplina_dados = $disciplina->list_unico($id)[0];
-
-
-    if($_POST){
-        
-        $nome = $_POST['disciplina'];
-        $disciplina->edit($nome, $id);
-    }
 
     ?>
         <!DOCTYPE html>
@@ -61,7 +50,8 @@ if(!defined('C7E3L8K9E58743')){
                     </div><!--fim menu top-->
                     <div class="content-body-turmas-cadastrar">
                         <div class="card-curso">
-                            <form action="" method="post">
+                            <form action="<?php echo DOMINIO_ADM . '/disciplinas/update' ?>" method="post">
+                                <input type="hidden" name="id" value="<?php echo $disciplina_dados['id'] ?>">
                                 <div>
                                     <div><label for="disciplina">Nome da disciplina</label></div>
                                     <input type="text" name="disciplina" id="disciplina" value="<?= $disciplina_dados['nome'] ?>" maxlength="50" required>

@@ -2,10 +2,32 @@
 
 class TurmasController{
     
-    public function list(){
+    public function index() {
+        include_once DIR_VIEW . '/turmas.php';
+    }
 
-        $turmas_list = new TurmasModel();
-        return $turmas_list->listarTurmas();
+    public function create() {
+        include_once DIR_VIEW . '/turma_criar.php';
+    }
+
+    public function store(){
+        
+        $turma_create = new TurmasModel();
+        return $turma_create->criarTurma($_POST);
+    }
+
+    public function list($id = null){
+        $turmas = new TurmasModel();
+
+        if ($id == null) {
+            return $turmas->listarTurmas();
+        } else {
+
+            // return $turmas->listarTurmaUnica($id);
+            $_GET['id'] = $id;
+            include_once DIR_VIEW . '/turmas_listar.php';
+
+        }
 
     }
 
@@ -19,20 +41,23 @@ class TurmasController{
     public function delete($id){
 
         $turma_delete = new TurmasModel();
-        return $turma_delete->deletarTurma($id);
+        $turma_delete->deletarTurma($id);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
 
     }
 
-    public function create($nome_turma,$nome_curso){
-        
-        $turma_create = new TurmasModel();
-        return $turma_create->criarTurma($nome_turma,$nome_curso);
+    public function edit($id){
+        $_GET['id'] = $id;
+        include_once DIR_VIEW . '/turma_editar.php';
+
     }
 
-    public function edit($id_turma, $nome_curso,$nome_turma){
-
+    public function update(){
         $turma_edit = new TurmasModel();
-        return $turma_edit->editarTurma($id_turma, $nome_curso,$nome_turma);
 
+        var_dump($_POST);
+
+        $turma_edit->editarTurma($_POST['id'], $_POST['curso'],$_POST['nome']);
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }

@@ -55,7 +55,7 @@ if(!defined('C7E3L8K9E58743')){
                     </div><!--fim menu top-->
                     <div class="content-body-turmas-cadastrar">
                         <div class="card-curso">
-                            <form action="" method="post">
+                            <form action="store" method="post">
                                 <div>
                                     <div><label for="nome_avaliacao">Nome da avaliação</label></div>
                                     <input type="text" name="nome_avaliacao" id="nome_avaliacao" required>
@@ -66,7 +66,7 @@ if(!defined('C7E3L8K9E58743')){
                                         <?php
                                         foreach($disciplinas->list() as $key => $disciplina){
                                             ?>
-                                            <option value="<?=$disciplina['nome']?>"><?=$disciplina['nome']?></option>
+                                            <option value="<?=$disciplina['id']?>"><?=$disciplina['nome']?></option>
                                             <?php
                                         }
                                         ?>

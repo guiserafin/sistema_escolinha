@@ -4,17 +4,10 @@ session_start();
 if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
-    $arr_url = explode("?", $_SERVER['REQUEST_URI']);
-    $arr_dados_curso = explode("&",$arr_url[1]);
-    $arr_id_curso = explode("=", $arr_dados_curso[0]);
-    
-    $id = $arr_id_curso[1];
-    $cursos = new CursosController();
 
-    if($_POST){
-        // var_dump($_POST);
-        $cursos->edit($_POST);
-    }
+    $id = $_GET['id'];
+
+    $cursos = new CursosController();
 
     ?>
         <!DOCTYPE html>
@@ -56,17 +49,17 @@ if(!defined('C7E3L8K9E58743')){
                         ?>
                     </div><!--fim menu top-->
                     <?php 
-                        $dados = $cursos->list_unico($id);
+                        $dados = $cursos->listUmCurso($id);
                         $disciplinas = new DisciplinasController();
                         $dados_disciplinas = $disciplinas->list();
                      ?>
                     <div class="content-body-turmas-cadastrar">
                         <div class="card-curso">
-                            <form action="" method="post">
+                            <form action="<?php echo DOMINIO_ADM . '/cursos/update' ?>" method="post">
                                 <input type="hidden" name="id" id="id" value="<?= $id ?>">
                                 <div>
                                     <div><label for="nome_curso">Nome do curso</label></div>
-                                    <input type="text" name="nome_curso" id="nome_curso" value="<?= $dados[0]['nome_curso']?>" maxlength="50" required>
+                                    <input type="text" name="nome_curso" id="nome_curso" value="<?= $dados[0]['nome']?>" maxlength="50" required>
                                 </div>
                                 <div>
                                     <div><label for="dataIncio">Data de início</label></div>

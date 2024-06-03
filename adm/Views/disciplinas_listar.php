@@ -4,11 +4,7 @@ session_start();
 if(!defined('C7E3L8K9E58743')){
     include_once "/var/www/html/Views/home.php";
 }else{
-    $arr_url = explode("?", $_SERVER['REQUEST_URI']);
-    $arr_dados_curso = explode("&",$arr_url[1]);
-    $arr_id_curso = explode("=", $arr_dados_curso[0]);
-    
-    $id = $arr_id_curso[1];
+    $id = $_GET['id'];
     $disciplinas = new CursosController();
 
     ?>

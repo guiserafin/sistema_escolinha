@@ -57,7 +57,7 @@ if(!defined('C7E3L8K9E58743')){
 
                     <div class="content-body-turmas-cadastrar p-2">
                         <div class="card-cadastro">
-                            <form action="" method="post">
+                            <form action="store" method="post">
                                 <div>
                                     <div><label for="nome">Nome da turma</label></div>
                                     <input type="text" name="nome" id="nome" required>
@@ -68,7 +68,7 @@ if(!defined('C7E3L8K9E58743')){
                                         <?php
                                             foreach($cursos->list() as $key => $curso){
                                                 ?>
-                                                    <option value="<?= $curso['nome'] ?>"><?= $curso['nome'] ?></option>
+                                                    <option value="<?= $curso['id'] ?>"><?= $curso['nome'] ?></option>
                                                 <?php
                                             } 
                                         ?>

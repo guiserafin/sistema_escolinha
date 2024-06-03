@@ -41,8 +41,9 @@ if(!defined('C7E3L8K9E58743')){
             <div class="dados-cadastro d-flex">
                 <div id="dados-pessoais" class="conteudo-cadastro-dados-pessoais">
                     <div class="inputs-cadastro-dados-pessoais">
-                        <form action="" method="post">
+                        <form action="<?php echo DOMINIO_ADM . "/usuarios/store" ?>" method="post">
                             <input type="hidden" name="id">
+                            <input type="hidden" name="tipo" value="3">
                             <div>
                                 <label for="nome">Nome</label>
                                 <input  type="text" name="nome" id="nome" maxlength="200" required>
@@ -97,58 +98,6 @@ if(!defined('C7E3L8K9E58743')){
                                 <input  type="text" name="cep" id="cep" maxlength="9" required>
                             </div>
                             <div>
-                                <label for="uf">UF</label>
-                                <select name="uf" id="uf">
-                                    <option value="Acre (AC)">Acre (AC)</option>
-                                    <option value="Alagoas (AL)">Alagoas (AL)</option>
-                                    <option value="Amapá (AP)">Amapá (AP)</option>
-                                    <option value="Amazonas (AM)">Amazonas (AM)</option>
-                                    <option value="Bahia (BA)">Bahia (BA)</option>
-                                    <option value="Ceará (CE)">Ceará (CE)</option>
-                                    <option value="Distrito Federal (DF)">Distrito Federal (DF)</option>
-                                    <option value="Espírito Santo (ES)">Espírito Santo (ES)</option>
-                                    <option value="Goiás (GO)">Goiás (GO)</option>
-                                    <option value="Maranhão (MA)">Maranhão (MA)</option>
-                                    <option value="Mato Grosso (MT)">Mato Grosso (MT)</option>
-                                    <option value="Mato Grosso do Sul (MS)">Mato Grosso do Sul (MS)</option>
-                                    <option value="Minas Gerais (MG)">Minas Gerais (MG)</option>
-                                    <option value="Pará (PA)">Pará (PA)</option>
-                                    <option value="Paraíba (PB)">Paraíba (PB)</option>
-                                    <option value="Paraná (PR)">Paraná (PR)</option>
-                                    <option value="Pernambuco (PE)">Pernambuco (PE)</option>
-                                    <option value="Piauí (PI)">Piauí (PI)</option>
-                                    <option value="Rio de Janeiro (RJ)">Rio de Janeiro (RJ)</option>
-                                    <option value="Rio Grande do Norte (RN)">Rio Grande do Norte (RN)</option>
-                                    <option value="Rio Grande do Sul (RS)">Rio Grande do Sul (RS)</option>
-                                    <option value="Rondônia (RO)">Rondônia (RO)</option>
-                                    <option value="Roraima (RR)">Roraima (RR)</option>
-                                    <option value="Santa Catarina (SC)">Santa Catarina (SC)</option>
-                                    <option value="São Paulo (SP)">São Paulo (SP)</option>
-                                    <option value="Sergipe (SE)">Sergipe (SE)</option>
-                                    <option value="Tocantins (TO)">Tocantins (TO)</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="cidade">Cidade</label>
-                                <input  type="text" name="cidade" id="cidade" maxlength="100" required>
-                            </div>
-                            <div>
-                                <label for="Bairro">Bairro</label>
-                                <input  type="text" name="bairro" id="bairro" maxlength="100" required>
-                            </div>
-                            <div>
-                                <label for="logradouro">Logradouro</label>
-                                <input  type="text" name="logradouro" id="logradouro" maxlength="100" required>
-                            </div>
-                            <div>
-                                <label for="numero">Numero</label>
-                                <input  type="text" name="numero" id="numero" maxlength="6" required>
-                            </div>
-                            <div>
-                                <label for="complemento">Complemento (Opcional)</label>
-                                <input  type="text" name="complemento" id="complemento" maxlength="200">
-                            </div>
-                            <div>
                                 <div>
                                     <?php
                                         if(isset($_SESSION['msg'])){
@@ -164,6 +113,12 @@ if(!defined('C7E3L8K9E58743')){
                 </div><!--fim dados pessoais-->
             </div>
     </body>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.js"></script>
+    <script>
+        $("#cpf").mask('000.000.000-00');
+        $("#telefone").mask("(00)00000-0000");
+    </script>
     </html>
     <?php
 }

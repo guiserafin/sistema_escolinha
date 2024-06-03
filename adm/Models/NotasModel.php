@@ -8,7 +8,7 @@ class NotasModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT n.*, u.`nome` AS nome_usuario, a.`nome`AS nome_avaliacao FROM `notas` AS n INNER JOIN `usuarios` AS u ON (`n`.`usuario_id` = `u`.`id`) INNER JOIN `avaliacoes` AS a ON (`n`.`avaliacao_id` = `a`.`id`) ORDER BY nome_usuario";
+        $sql = "SELECT n.*, u.`nome` AS nome_usuario, a.`nome`AS nome_avaliacao FROM `nota` AS n INNER JOIN `usuario` AS u ON (`n`.`aluno_id` = `u`.`id`) INNER JOIN `avaliacao` AS a ON (`n`.`avaliacao_id` = `a`.`id`) ORDER BY nome_usuario";
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $dados_notas = $sql_query->fetchAll();
@@ -21,7 +21,7 @@ class NotasModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT n.*, u.`nome` AS nome_usuario, a.`nome`AS nome_avaliacao FROM `notas` AS n INNER JOIN `usuarios` AS u ON (`n`.`usuario_id` = `u`.`id`) INNER JOIN `avaliacoes` AS a ON (`n`.`avaliacao_id` = `a`.`id`) WHERE n.`id`=" .$id;
+        $sql = "SELECT n.*, u.`nome` AS nome_usuario, a.`nome`AS nome_avaliacao FROM `notas` AS n INNER JOIN `usuario` AS u ON (`n`.`usuario_id` = `u`.`id`) INNER JOIN `avaliacoes` AS a ON (`n`.`avaliacao_id` = `a`.`id`) WHERE n.`id`=" .$id;
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $sql_dados= $sql_query->fetchAll()[0];
@@ -34,9 +34,10 @@ class NotasModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $dateCreate = date("Y-m-d H:i:s");
+        var_dump($dados);
 
-        $sql = "INSERT INTO `notas` (`id`, `usuario_id`, `avaliacao_id`, `nota`, `dateCreate`) VALUES (NULL, '".$dados['id_aluno']."', '".$dados['id_avaliacao']."', '".$dados['nota']."','".$dateCreate."')";
+        $sql = "INSERT INTO `nota` (`aluno_id`, `avaliacao_id`, `nota`) 
+            VALUES ('".$dados['id_aluno']."', '".$dados['id_avaliacao']."', '".$dados['nota']."')";
         $sql_query = $this->conn->prepare($sql);
 
         if($sql_query->execute()){

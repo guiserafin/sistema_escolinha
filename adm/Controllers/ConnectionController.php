@@ -7,7 +7,7 @@ abstract class ConnectionController
     public string $host   = "projeto1";
     public string $user   = "root";
     public string $pass   = "root";
-    public string $dbname = "AcademiaSCI";
+    public string $dbname = "projeto";
     public int $port      = 3306;
     public object $connection;
 
@@ -20,7 +20,7 @@ abstract class ConnectionController
 
         } catch (Exception $e) {
 
-            echo "Entre em contato com o administrador do sistema (00) 0000-0000";
+            throw new PDOException($e->getMessage(), (int)$e->getCode());
 
         }
         

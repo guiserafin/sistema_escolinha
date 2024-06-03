@@ -28,9 +28,6 @@ if(!defined('C7E3L8K9E58743')){
                             <a class="link menu_left_link" href="./professores">Professores</a>
                         </li>
                         <li class="menu_left_item">
-                            <a class="link menu_left_link" href="./endereco">Endereços</a>
-                        </li>
-                        <li class="menu_left_item">
                             <a class="link menu_left_link" href="./turmas">Turmas</a>
                         </li>
                         <li class="menu_left_item">
@@ -63,7 +60,7 @@ if(!defined('C7E3L8K9E58743')){
                     <div class="content-body">
                         <div class="cadastrar">
                             <h2>Notas Cadastradas</h2>
-                            <a class="link" href="<?php echo DOMINIO_ADM . "/notas/nota_criar"?>">Cadastrar Nota</a>
+                            <a class="link" href="<?php echo DOMINIO_ADM . "/notas/create"?>">Cadastrar Nota</a>
                         </div>
                         <table class="tabela-cursos">
                             <thead>
