@@ -11,7 +11,7 @@ class NotasController
         include_once DIR_VIEW . '/nota_criar.php';
     }
 
-    public function store($dados){
+    public function store(){
 
         $notas_create = new NotasModel();
         $notas_create->cadastrarNota($_POST);
@@ -33,16 +33,23 @@ class NotasController
 
     }
 
-    public function edit($dados){
+    public function edit($id){
+        $_GET['id'] = $id;
+        include_once DIR_VIEW . "/nota_editar.php";
+    }
+
+    public function update(){
 
         $nota_edit = new NotasModel();
-        $nota_edit->editarNota($dados);
+        $nota_edit->editarNota($_POST);
+        header("Location: " . $_SERVER['HTTP_REFERER']);
     }
 
     public function delete($id){
         
         $nota_delete = new NotasModel();
         $nota_delete->deletarNota($id);
+        header("Location: " . $_SERVER["HTTP_REFERER"]);
         
     }
 }

@@ -80,8 +80,8 @@ if(!defined('C7E3L8K9E58743')){
                                             <td><?= $nota['nome_avaliacao'] ?></td>
                                             <td><?= $nota['nota'] ?></td>
                                             <td>
-                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/nota_editar?id=" . $nota['id'] . "&editar=true" ?>">Editar</a>
-                                                <a href="<?php echo DOMINIO_ADM . "/dashboard/nota_excluir?id=". $nota['id'] . "&excluir=true"?>">Excluir</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/notas/edit/" . $nota['id'] ?>">Editar</a>
+                                                <a href="<?php echo DOMINIO_ADM . "/notas/delete/". $nota['id'] ?>">Excluir</a>
                                             </td>
                                         </tr>
                                    <?php

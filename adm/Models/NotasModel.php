@@ -21,7 +21,7 @@ class NotasModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "SELECT n.*, u.`nome` AS nome_usuario, a.`nome`AS nome_avaliacao FROM `notas` AS n INNER JOIN `usuario` AS u ON (`n`.`usuario_id` = `u`.`id`) INNER JOIN `avaliacoes` AS a ON (`n`.`avaliacao_id` = `a`.`id`) WHERE n.`id`=" .$id;
+        $sql = "SELECT n.*, u.`nome` AS nome_usuario, a.`nome`AS nome_avaliacao FROM `nota` AS n INNER JOIN `usuario` AS u ON (`n`.`aluno_id` = `u`.`id`) INNER JOIN `avaliacao` AS a ON (`n`.`avaliacao_id` = `a`.`id`) WHERE n.`id`=" .$id;
         $sql_query = $this->conn->prepare($sql);
         $sql_query->execute();
         $sql_dados= $sql_query->fetchAll()[0];
@@ -50,9 +50,9 @@ class NotasModel extends ConnectionController
     public function editarNota($dados){
 
         $this->conn = $this->connectDb();
-        $dateModified = date("Y-m-d H:i:s");
+        // var_dump($dados);
 
-        $sql = "UPDATE `notas` SET `avaliacao_id` = '".$dados['id_avaliacao']."', `nota` = '".$dados['nota']."', `dateModified` = '".$dateModified."' WHERE `notas`.`id` = ".$dados['id_nota'];
+        $sql = "UPDATE `nota` SET `avaliacao_id` = '".$dados['id_avaliacao']."', `nota` = '".$dados['nota']."' WHERE `nota`.`id` = ".$dados['id_nota'];
         $sql_query = $this->conn->prepare($sql);
 
         if($sql_query->execute()){
@@ -67,7 +67,7 @@ class NotasModel extends ConnectionController
 
         $this->conn = $this->connectDb();
 
-        $sql = "DELETE FROM `notas` WHERE `notas`.`id`= " . $id;
+        $sql = "DELETE FROM `nota` WHERE `nota`.`id`= " . $id;
         $sql_query = $this->conn->prepare($sql);
 
         if($sql_query->execute()){

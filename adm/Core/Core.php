@@ -8,10 +8,6 @@ class Core{
 
         $caminho        = file_exists("/var/www/html/Controllers/".$controllerFile.".php");
 
-        // var_dump($controllerFile, $caminho, $metodo);
-
-        // var_dump($caminho, $controller, $metodo, $parametro);
-
         if($caminho){
 
             if(class_exists($controllerFile)){
